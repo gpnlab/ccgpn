@@ -5,6 +5,8 @@ edit_uri: edit/master/docs/docs
 copyright: Project maintained by the folks at <a target=_blanks href="https://gpn.pitt.edu/">GPN Lab</a>.
 theme:
   name: material
+  logo: favicon-32x32.png
+  favicon: favicon.ico
 extra_css:
   - css/extra.css
 nav:
