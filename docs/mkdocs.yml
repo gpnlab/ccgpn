@@ -1,11 +1,10 @@
-site_name: Cookiecutter GPNLab
+site_name: Cookiecutter GPN Lab
 site_description: A project template and directory structure for Python/Pytorch data science projects.
 repo_url: https://github.com/gpnlab/cookiecutter-gpnlab
 edit_uri: edit/master/docs/docs
-copyright: Project maintained by the folks at <a target=_blanks href="https://gpn.pitt.edu/">GPNLab</a>.
+copyright: Project maintained by the folks at <a target=_blanks href="https://gpn.pitt.edu/">GPN Lab</a>.
 theme:
   name: material
-  favicon:
 extra_css:
   - css/extra.css
 nav:
