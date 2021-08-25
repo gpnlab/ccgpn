@@ -1,12 +1,12 @@
 site_name: Cookiecutter GPNLab
 site_description: A project template and directory structure for Python/Pytorch data science projects.
-site_favicon: favicon.ico
-repo_url: https://github.com/drivendata/cookiecutter-data-science
+repo_url: https://github.com/gpnlab/cookiecutter-gpnlab
 edit_uri: edit/master/docs/docs
-copyright: Project maintained by the friendly folks at <a target=_blanks href="https://www.drivendata.org">DrivenData</a>.
-google_analytics: ['UA-54096005-4', 'auto']
-theme: cinder
+copyright: Project maintained by the folks at <a target=_blanks href="https://gpn.pitt.edu/">GPNLab</a>.
+theme:
+  name: material
+  favicon:
 extra_css:
   - css/extra.css
-pages:
+nav:
   - Home: index.md
