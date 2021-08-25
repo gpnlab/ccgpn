@@ -1,9 +1,9 @@
 # Cookiecutter Data Science
 
-_A logical, reasonably standardized, but flexible project structure for doing and sharing data science work at the GPNLab._
+_A flexible project structure for doing and sharing data science work at the GPN._
 
 
-#### [GPNLab homepage](https://github.com/gpnlab)
+#### [Project homepage](https://gpnlab.github.io/ccgpn)
 
 
 ### Requirements to use the cookiecutter template:
@@ -27,7 +27,7 @@ $ conda install cookiecutter
 ### To start a new project, run:
 ------------
 
-    cookiecutter -c v1 https://github.com/gpnlab/cookiecutter-gpnlab
+    cookiecutter -c v1 https://github.com/gpnlab/ccgpn
 
 
 [![asciicast](https://asciinema.org/a/244658.svg)](https://asciinema.org/a/244658)

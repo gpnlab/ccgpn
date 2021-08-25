@@ -27,7 +27,7 @@ class TestCookieSetup(object):
     def test_project_name(self):
         project = self.path
         if pytest.param.get('project_name'):
-            name = system_check('DrivenData')
+            name = system_check('CCGPN')
             assert project.name == name
         else:
             assert project.name == 'project_name'
@@ -37,7 +37,7 @@ class TestCookieSetup(object):
         args = ['python', str(setup_), '--author']
         p = check_output(args).decode('ascii').strip()
         if pytest.param.get('author_name'):
-            assert p == 'DrivenData'
+            assert p == 'CCGPN'
         else:
             assert p == 'Your name (or your organization/company/team)'
 
@@ -47,7 +47,7 @@ class TestCookieSetup(object):
         assert no_curlies(readme_path)
         if pytest.param.get('project_name'):
             with open(readme_path) as fin:
-                assert 'DrivenData' == next(fin).strip()
+                assert 'CCGPN' == next(fin).strip()
 
     def test_setup(self):
         setup_ = self.path / 'setup.py'
@@ -110,4 +110,3 @@ class TestCookieSetup(object):
         abs_expected_dirs = [str(self.path / d) for d in expected_dirs]
         abs_dirs, _, _ = list(zip(*os.walk(self.path)))
         assert len(set(abs_expected_dirs + ignored_dirs) - set(abs_dirs)) == 0
-

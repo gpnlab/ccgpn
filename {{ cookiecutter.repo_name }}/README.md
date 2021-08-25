@@ -55,3 +55,5 @@ Project Organization
 --------
 
 <p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
+<p><small>Deep learning workflow based on the <a target="_blank" href="https://github.com/khornlund/cookiecutter-pytorch">cookiecutter PyTorch Deep Learning template</a>. #cookiecutterpytorch</small></p>
+<p><small>Some features inspired by <a target="_blank" href="https://github.com/uwescience/shablona">A template for small scientific python projects</a>. #shablona</small></p>
