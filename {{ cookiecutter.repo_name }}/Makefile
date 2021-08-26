@@ -24,6 +24,7 @@ endif
 requirements: test_environment
 	$(PYTHON_INTERPRETER) -m pip install -U pip setuptools wheel
 	$(PYTHON_INTERPRETER) -m pip install -r requirements.txt
+	$(PYTHON_INTERPRETER) -m pip install -r requirements-dev.txt
 
 ## Make Dataset
 data: requirements
@@ -36,7 +37,14 @@ clean:
 
 ## Lint using flake8
 lint:
-	flake8 src
+	@if command -v flake8 > /dev/null; then \
+		echo "Running flake8"; \
+		flake8 flake8 --ignore N802,N806 `find . -name \*.py | grep -v setup.py | grep -v /docs/`; \
+	else \
+		echo "flake8 not found, please install it!"; \
+		exit 1; \
+	fi;
+	@echo "flake8 passed"
 
 ## Upload Data to S3
 sync_data_to_s3:
@@ -79,7 +87,9 @@ test_environment:
 #################################################################################
 # PROJECT RULES                                                                 #
 #################################################################################
-
+# Test the entire {{ cookiecutter.repo_name }} module
+test:
+	py.test --pyargs $(PROJECT_NAME) --cov-report term-missing --cov=$(PROJECT_NAME)
 
 
 #################################################################################

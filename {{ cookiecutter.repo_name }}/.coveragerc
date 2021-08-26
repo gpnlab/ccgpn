@@ -1,0 +1,7 @@
+[run]
+branch = True
+source = {{ cookiecutter.repo_name }}/*
+include = {{ cookiecutter.repo_name }}/*
+omit = */setup.py
+[report]
+include = {{ cookiecutter.repo_name }}/*

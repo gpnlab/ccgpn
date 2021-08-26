@@ -1,0 +1,6 @@
+# external requirements
+coverage
+pytest
+pytest-cov
+coveralls
+flake8

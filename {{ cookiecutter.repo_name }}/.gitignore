@@ -52,6 +52,8 @@ coverage.xml
 
 # Sphinx documentation
 docs/_build/
+docs/auto_examples/
+docs/gen_api/
 
 # PyBuilder
 target/
@@ -80,6 +82,9 @@ target/
 
 # Mac OS-specific storage files
 .DS_Store
+
+# Exclude backup and lock files
+*~
 
 # vim
 *.swp

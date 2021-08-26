@@ -6,6 +6,15 @@
 {{ cookiecutter.project_name }} documentation!
 ==============================================
 
+`{{ cookiecutter.project_name }}` is a flexible project structure for implementing and sharing machine learning models.
+
+To see how to use it, please refer to the `README file
+<https://github.com/gpnlab/ccgpn/blob/master/README.md>`_ in the Github repository.
+
+This is an example of documentation of the software, using sphinx_.
+
+.. _sphinx: http://sphinx-doc.org/
+
 Contents:
 
 .. toctree::
@@ -13,8 +22,9 @@ Contents:
 
    getting-started
    commands
-
-
+   theory
+   auto_examples/index
+   api
 
 Indices and tables
 ==================
