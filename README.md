@@ -1,10 +1,14 @@
-<img style="float: left; margin: 5px;" src="./docs/docs/ccgpn-logo.png" alt="drawing" width="400"/>
+<img style="float: left; margin: 5px;" src="./docs/docs/ccgpn-logo.png" alt="drawing" width="450"/>
+
+<br/>
 
 # Cookiecutter GPN
 
-#### _A flexible project structure for implementing and sharing machine learning models.
+#### _A flexible project structure for implementing and sharing machine learning models._
 
 #### Project Homepage:[ gpnlab.github.io/ccgpn](https://gpnlab.github.io/ccgpn)
+
+<br/><br/>
 
 The recommendations we make here follow the standards and conventions of much
 of the scientific Python eco-system. Following these standards and
@@ -24,8 +28,8 @@ starting point for many projects.
 
 ### Requirements to use the cookiecutter template:
 -----------
- - Python 2.7 or 3.5+
- - [Cookiecutter Python package](http://cookiecutter.readthedocs.org/en/latest/installation.html) >= 1.4.0:
+ - Python 2.7 or 3.8+
+ - [Cookiecutter Python package](http://cookiecutter.readthedocs.org/en/latest/installation.html) >= 1.7.0:
  - This can be installed with pip by or conda depending on how you manage your Python packages:
 
 ``` bash
@@ -57,12 +61,10 @@ py.test tests
 
 ### Example
 ------------
-
 [![asciicast](https://asciinema.org/a/244658.svg)](https://asciinema.org/a/244658)
 
 ### The resulting directory structure
 ------------
-
 The directory structure of your new project looks like this:
 
 ```
@@ -114,12 +116,10 @@ The directory structure of your new project looks like this:
 
 ## Repository Structure
 ------------
-
 We now examine the newly created repository in more detail.
 
 ### Environment and Installation
 ------------
-
 The first step in reproducing an analysis is always reproducing the
 computational environment it was run in. You need the same tools, the same
 libraries, and the same versions to make everything play nicely together.
@@ -162,7 +162,6 @@ need.
 
 ### Installation
 ------------
-
 For installation and distribution we will use the python standard library
 `setuptools` module. This module uses a `setup.py` file to figure out how to
 install your software on a particular system. For a small project such as this
@@ -182,7 +181,6 @@ Much more information on packaging Python software can be found in the
 packaging](https://the-hitchhikers-guide-to-packaging.readthedocs.org).
 
 ### Continuous integration
-
 ![continuous integration](./docs/docs/continuous-integration.png)
 
 Travis-CI is a system that can be used to automatically test every revision of
@@ -238,7 +236,6 @@ account).
 
 ### Distribution
 ------------
-
 The main venue for distribution of Python software is the [Python
 Package Index](https://pypi.python.org/), or PyPI, also lovingly known
 as "the cheese-shop". To distribute your software on PyPI, you will need to create a user account on
@@ -252,7 +249,6 @@ to install the travis command-line interface.
 
 ### Source Code
 ------------
-
 We place the main module for the source code in a file called `package_name.py`
 in directory called `package_name`. This structure is a bit confusing at first,
 but it is a simple way to create a structure where when we type `import
@@ -275,7 +271,6 @@ or package.
 
 ### Version Control
 ------------
-
 ![code style](./docs/docs/git.png)
 
 Source code versioning control is managed with git. Currently there are two
@@ -326,7 +321,6 @@ other_variable = os.environ.get("OTHER_VARIABLE")
 
 ### Data
 ------------
-
 Don't ever edit your raw data, especially not manually, and especially not in
 Excel. Don't overwrite your raw data. Don't save multiple versions of the raw
 data. Treat the data (and its format) as immutable. The code you write should
@@ -406,7 +400,6 @@ data_path = op.join(root, 'data')
 
 ### Styling
 ------------
-
 ![code style](./docs/docs/code-style.png)
 
 Remember that code will be probably be read more times than it will be written.
@@ -438,7 +431,6 @@ make flake8
 
 ### Documentation
 ------------
-
 Documenting your software is a good idea. Not only as a way to communicate to
 others about how to use the software, but also as a way of reminding yourself
 what the issues are that you faced, and how you dealt with them, in a few
@@ -487,7 +479,6 @@ configuration file is in `docs/conf.py`.
 
 ### Testing
 ------------
-
 ![Bug]('./docs/docs/bug.png')
 
 Most scientists who write software constantly test their code. That is, if you
@@ -541,7 +532,7 @@ and type:
 
 ```bash
 py.test package_name
-````
+```
 
 This will exercise all of the tests in your code directory. If a test fails, you
 will see a message such as:
@@ -583,7 +574,6 @@ make test
 
 ### Notebooks
 ------------
-
 ![code style](./docs/docs/notebooks.png)
 
 Notebook packages like the [Jupyter notebook](http://jupyter.org/), [Beaker notebook](http://beakernotebook.com/), [Zeppelin](http://zeppelin-project.org/), and other literate programming tools are very effective for exploratory data analysis. Hence, the notebooks directory can be used as a place to experiment with your module code, and as a place to produce scripts that contain a narrative structure, demonstrating the use of the code, or producing scientific results from your code and your data and telling a story with these elements. For example, an IPython notebook that reads in some data, and creates a figure. Maybe this is *Figure 1* from some future article?
@@ -610,7 +600,6 @@ from package_name.data import make_dataset
 
 ### Licensing
 ------------
-
 License your code! A repository like this without a license maintains
 copyright to the author, but does not provide others with any
 conditions under which they can use the software. In this case, we use
@@ -627,7 +616,6 @@ choosing a license, see this
 
 ### Getting cited
 ------------
-
 When others use your code in their research, they should probably cite you. To
 make their life easier, we use [duecredit](http://www.duecredit.org). This is a software
 library that allows you to annotate your code with the correct way to cite it.
@@ -647,7 +635,6 @@ Another way to get your software cited is by writing a paper. There are several
 
 ### Contributing
 ------------
-
 Best practices change, tools evolve, and lessons are learned. **The goal of
 this project is to make it easier to start, structure, and share an analysis.**
 [Pull requests](https://github.com/gpnlab/ccgpn/pulls)
@@ -657,7 +644,6 @@ encouraged. We'd love to hear what works for you, and what doesn't!
 
 ### Links to related projects and references
 ------------
-
 Project structure and reproducibility is talked about more in the R research
 community. Here are some projects and blog posts if you're working in R that
 may help you out.
@@ -669,7 +655,6 @@ may help you out.
 
 ### Acknowledgements
 ------------
-
 Many thanks to the
 [Cookiecutter](https://cookiecutter.readthedocs.org/en/latest/) project
 ([github](https://github.com/audreyr/cookiecutter)), which is helping us all
@@ -678,7 +663,7 @@ spend less time molding time getting things baked.
 This cookiecutter was developed abreast the awesome [Cookiecutter Data
 Science](http://drivendata.github.io/cookiecutter-data-science/)
 project([github](https://github.com/drivendata/cookiecutter-data-science)),
-borrowing features (e.g. duecredit, travis CI) from
-[shablona](https://github.com/uwescience/shablona) and inspired by the model
+borrowing features from
+[shablona](https://github.com/uwescience/shablona) (e.g. duecredit, travis CI) and inspired by the directory
 scaffold of
 [Cookiecutter-Pytorch](https://github.com/khornlund/cookiecutter-pytorch).
