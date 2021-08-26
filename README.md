@@ -1,14 +1,8 @@
-<img style="float: left; margin: 5px;" src="./docs/docs/ccgpn-logo.png" alt="drawing" width="450"/>
+<p align="center"><img src="ccgpn-logo.png" height="960" width="480"/></p>
 
-<br/>
+<center> <h1>__Cookiecutter GPN:__ A flexible project structure for implementing and sharing machine learning models.</h1></center>
 
-# Cookiecutter GPN
-
-#### _A flexible project structure for implementing and sharing machine learning models._
-
-#### Project Homepage:[ gpnlab.github.io/ccgpn](https://gpnlab.github.io/ccgpn)
-
-<br/><br/>
+<h4><p style="text-align:right;">Project GitHub Repo: <a href=https://github.com/gpnlab/ccgpn/>https://github.com/gpnlab/ccgpn</a></p></h4>
 
 The recommendations we make here follow the standards and conventions of much
 of the scientific Python eco-system. Following these standards and
