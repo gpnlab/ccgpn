@@ -1,6 +1,7 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
+*$py.class
 
 # C extensions
 *.so
@@ -19,6 +20,7 @@ lib64/
 parts/
 sdist/
 var/
+wheels/
 *.egg-info/
 .installed.cfg
 *.egg
@@ -42,6 +44,7 @@ htmlcov/
 nosetests.xml
 coverage.xml
 *.cover
+.hypothesis/
 
 # Translations
 *.mo
@@ -92,3 +95,8 @@ target/
 
 # Mypy cache
 .mypy_cache/
+
+# virtualenv
+.venv
+venv/
+ENV/

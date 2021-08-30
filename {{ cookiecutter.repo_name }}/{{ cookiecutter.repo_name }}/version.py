@@ -34,11 +34,11 @@ long_description = """
 
 {{ cookiecutter.description }}
 
-{{ cookiecutter.project_url }}
+{{ cookiecutter.project_homepage }}
 
 Pay a visit the repository README_ :)
 
-.. _README: https://github.com/{{ cookiecutter.github_handle }}/{{ cookiecutter.repo_name }}/blob/master/README.md
+.. _README: {{ cookiecutter.project_url }}/blob/master/README.md
 
 License
 =======
