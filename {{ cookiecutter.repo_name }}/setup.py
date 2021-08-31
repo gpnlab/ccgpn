@@ -1,11 +1,11 @@
 import sys
-import os
+from os.path import join as pjoin
 from setuptools import find_packages, setup
 
-PACKAGES = find_packages()
+PACKAGES = find_packages(exclude=("tests",))
 
 # Get version and release info
-ver_file = os.path.join('{{ cookiecutter.repo_name }}', 'version.py')
+ver_file = pjoin('{{ cookiecutter.repo_name }}', 'version.py')
 with open(ver_file) as f:
     exec(f.read())
 
@@ -31,6 +31,7 @@ opts = dict(name=NAME,
             version=VERSION,
             packages=PACKAGES,
             package_data=PACKAGE_DATA,
+            entry_points=ENTRY_POINTS,
             install_requires=REQUIRES,
             python_requires=PYTHON_REQUIRES,
             setup_requires=SETUP_REQUIRES,

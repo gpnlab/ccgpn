@@ -4,3 +4,6 @@ pytest
 pytest-cov
 coveralls
 flake8
+rope
+autopep8
+black

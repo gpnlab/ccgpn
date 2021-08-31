@@ -1,5 +1,17 @@
 from __future__ import absolute_import, division, print_function
 from os.path import join as pjoin
+from pathlib import Path
+import io
+import re
+import {{ cookiecutter.repo_name }} as pkg
+root = Path(pkg.__path__[0]).parent.absolute()
+readme = pjoin(root, 'README.md')
+
+def read_long_description(readme):
+    text_type = type(u"")
+    with io.open(readme, mode="r", encoding="utf-8") as fd:
+        return re.sub(text_type(r":[a-z]+:`~?(.*?)`"), text_type(r"``\1``"),
+                      fd.read())
 
 # Format expected by setup.py and docs/conf.py: string of form "X.Y.Z"
 _version_major = 0
@@ -23,39 +35,14 @@ CLASSIFIERS = ["Development Status :: 3 - Alpha",
                "License :: OSI Approved :: {{ cookiecutter.open_source_license }}",
                "Operating System :: OS Independent",
                "Programming Language :: Python",
+               "Programming Language :: Python :: 3.8",
                "Topic :: Scientific/Engineering"]
-
-# Description should be a one-liner:
-description = "{{ cookiecutter.description }}"
-# Long description will go up on the pypi page
-long_description = """
-{{ cookiecutter.project_name }}
-========
-
-{{ cookiecutter.description }}
-
-{{ cookiecutter.project_homepage }}
-
-Pay a visit the repository README_ :)
-
-.. _README: {{ cookiecutter.project_url }}/blob/master/README.md
-
-License
-=======
-``shablona`` is licensed under the terms of the {{ cookiecutter.open_source_license }}.
-See the file "LICENSE" for information on the history of this software,
-terms & conditions for usage, and a DISCLAIMER OF ALL WARRANTIES.
-
-All trademarks referenced herein are property of their respective holders.
-
-Copyright (c) {{ cookiecutter.author_name }}.
-"""
 
 NAME = "{{ cookiecutter.repo_name }}"
 MAINTAINER = "{{ cookiecutter.author_name }}"
 MAINTAINER_EMAIL = "{{ cookiecutter.author_email }}"
-DESCRIPTION = description
-LONG_DESCRIPTION = long_description
+DESCRIPTION = "p{{ cookiecutter.description }}"
+LONG_DESCRIPTION = read_long_description(readme)
 URL = "http://github.com/{{ cookiecutter.github_handle }}/{{ cookiecutter.repo_name }}"
 DOWNLOAD_URL = ""
 LICENSE = "{{ cookiecutter.open_source_license }}"
@@ -67,5 +54,10 @@ MINOR = _version_minor
 MICRO = _version_micro
 VERSION = __version__
 PACKAGE_DATA = {'{{ cookiecutter.repo_name }}': [pjoin('data', '*')]}
-REQUIRES = ["numpy"]
+REQUIRES = [] # use environment.yml for conda or requirements.txt for pip
 PYTHON_REQUIRES = ">= 3.8"
+ENTRY_POINTS = {
+    "console_scripts": [
+        "{{ cookiecutter.repo_name }}={{ cookiecutter.repo_name }}.cli:cli"
+    ]
+}
