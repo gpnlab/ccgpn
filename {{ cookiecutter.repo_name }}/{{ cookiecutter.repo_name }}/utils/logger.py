@@ -44,7 +44,8 @@ def setup_logging(trial_config, log_config="logging.yml") -> None:
     if not log_config.exists():
         logging.basicConfig(level=LOG_LEVEL)
         logger = logging.getLogger("setup")
-        logger.warning(f'"{log_config}" not found. Using basicConfig.')
+        msg= f'"{log_config}" not found. Using basicConfig.'
+        logger.warning(msg)
         return
 
     with open(log_config, "rt") as f:

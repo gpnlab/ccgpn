@@ -228,9 +228,9 @@ Config files are in `.yml` format:
 
 ```yaml
 name: A04-E03-S0004
-n_gpu: 1
-save_dir: runs/
-seed: 1234
+seed: 12345
+target_devices: [0]
+save_dir: trials/
 
 arch:
     type: bar
@@ -254,8 +254,8 @@ lr_scheduler:
         step_size: 50
 
 metrics:
-    my_metric
-    my_metric2
+    - my_metric
+    - my_metric2
 
 optimizer:
     type: Adam

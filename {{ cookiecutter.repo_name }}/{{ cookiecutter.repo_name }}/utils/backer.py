@@ -7,7 +7,7 @@ from pathlib import Path
 import datetime
 from os.path import join as pjoin
 
-import {{cookiecutter.repo_name}} as pkg
+import {{ cookiecutter.repo_name }} as pkg
 root = Path(pkg.__path__[0]).parent.absolute()
 
 LOG_DIR = "logs"
