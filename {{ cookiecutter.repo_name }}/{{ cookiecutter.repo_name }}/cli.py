@@ -17,17 +17,11 @@ def cli():
 
 
 @cli.command()
-@click.option(
-    '-c',
-    '--config-filename',
-    default=['experiments/config.yml'],
-    multiple=True,
-    help=(
-        'Path to training configuration file. If multiple are provided, runs will be '
-        'executed in order'
-    )
-)
-@click.option('-r', '--resume', default=None, type=str, help='path to checkpoint')
+@click.option('-c', '--config-filename', multiple=True,
+              help=('Path to training configuration file. If multiple are '
+                    'provided, runs will be executed in order'))
+@click.option('-r', '--resume', default=None, type=str,
+              help='path to checkpoint')
 def train_example(config_filename, resume):
     """
     Entry point to start training run(s) for model `example`.

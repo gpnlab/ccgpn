@@ -16,15 +16,19 @@ class BaseTrainer:
     """
     Base class for all trainers
     """
-    def __init__(self, model, optimizer, loss, metrics, start_epoch, config,
-                 device):
+    def __init__(self, model, loss, metrics, optimizer, start_epoch, config,
+                 device, dataloader=None, val_dataloader=None,
+                 lr_scheduler=None):
         self.model = model
-        self.optimizer = optimizer
         self.loss = loss
         self.metrics = metrics
+        self.optimizer = optimizer
         self.start_epoch = start_epoch
         self.config = config
         self.device = device
+        self.dataloader = dataloader
+        self.val_dataloader = val_dataloader
+        self.lr_scheduler = lr_scheduler
 
         self._setup_monitoring(config['training'])
 

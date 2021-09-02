@@ -14,14 +14,13 @@ import torch.nn as nn
 from {{ cookiecutter.repo_name }}.utils import set_seed
 from {{ cookiecutter.repo_name }}.utils import setup_logger
 
-from {{ cookiecutter.package_name }}.model_example import example_Arch
-from {{ cookiecutter.package_name }}.model_example import example_Optimizer
-from {{ cookiecutter.package_name }}.model_example import example_Scheduler
-from {{ cookiecutter.package_name }}.model_example import example_Augmentation
-from {{ cookiecutter.package_name }}.model_example import example_Dataloader
-from {{ cookiecutter.package_name }}.model_example import example_loss
-from {{ cookiecutter.package_name }}.model_example import example_metric
-from {{ cookiecutter.package_name }}.model_example import example_Trainer
+from {{ cookiecutter.package_name }}.model_example import ModelOptimizer
+from {{ cookiecutter.package_name }}.model_example import ModelTransform
+from {{ cookiecutter.package_name }}.model_example import ModelDataloader
+from {{ cookiecutter.package_name }}.model_example import ModelLoss
+from {{ cookiecutter.package_name }}.model_example import ModelMetric
+from {{ cookiecutter.package_name }}.model_example import ModelTrainer
+import torch.optim.lr_schedule as ModelScheduler
 
 
 logger = setup_logger(__name__)
@@ -173,21 +172,20 @@ def train(cfg: Dict, resume_path: str) -> None:
         seed = set_seed(logger)
     logger.debug(f'seed: {seed}')
 
-    model = get_instance(model_arch, 'arch', cfg)
+    model = get_instance(ModelArch, 'arch', cfg)
     model, device = setup_device(model, cfg['target_devices'])
 
     optimizer_params = get_optimizer_params(model, cfg['optimizer'])
-    optimizer = get_instance(model_optimizer, 'optimizer', cfg,
+    optimizer = get_instance(ModelOptimizer, 'optimizer', cfg,
                              optimizer_params)
-    lr_scheduler = get_instance(model_scheduler, 'lr_scheduler',
+    lr_scheduler = get_instance(ModelScheduler, 'lr_scheduler',
                                 cfg, optimizer)
     model, optimizer, start_epoch = resume_checkpoint(resume_path, model,
                                                       optimizer, cfg)
 
-    transforms = get_instance(model_augmentation, 'augmentation', cfg)
-    data_loader = get_instance(model_dataloader, 'data_loader', cfg,
-                               transforms)
-    valid_data_loader = data_loader.split_validation()
+    transform = get_instance(ModelTransform, 'transform', cfg)
+    dataloader = get_instance(ModelDataloader, 'dataloader', cfg, transform)
+    val_dataloader = dataloader.split_validation()
 
     logger.info('Getting loss and metric function handles')
     loss = getattr(model_loss, cfg['loss'])
@@ -198,8 +196,8 @@ def train(cfg: Dict, resume_path: str) -> None:
                       start_epoch=start_epoch,
                       config=cfg,
                       device=device,
-                      data_loader=data_loader,
-                      valid_data_loader=valid_data_loader,
+                      dataloader=dataloader,
+                      val_dataloader=val_dataloader,
                       lr_scheduler=lr_scheduler)
 
     trainer.train()
