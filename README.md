@@ -191,8 +191,8 @@ The directory structure of your new project looks like this:
     ├── base                      <- abstract base classes
     │   ├── __init__.py           <- Makes the abstract base class a Python subpackage
     │   ├── base_preprocessor.py  <- abstract base class for data preprocessing
+    │   ├── base_transform.py     <- abstract base class for data albumentations
     │   ├── base_dataset.py       <- abstract base class for datasets
-    │   ├── base_augmentation.py  <- abstract base class for data albumentations
     │   ├── base_dataloader.py    <- abstract base class for data loaders
     │   ├── base_model.py         <- abstract base class for models
     │   ├── base_loss.py          <- abstract base class for losses
