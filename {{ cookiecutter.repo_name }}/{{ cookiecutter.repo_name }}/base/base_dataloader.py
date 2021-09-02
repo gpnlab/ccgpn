@@ -1,7 +1,7 @@
 from torch.utils.data import DataLoader
 
 
-class DataLoaderBase(DataLoader):
+class BaseDataLoader(DataLoader):
     """
     Base class for all data loaders
     """

@@ -1,3 +1,3 @@
-from .base_dataloader import DataLoaderBase
-from .base_arch import ModelBase
-from .base_trainer import TrainerBase, AverageMeter
+from .base_dataloader import BaseDataLoader
+from .base_arch import BaseArch
+from .base_trainer import BaseTrainer, AverageMeter
