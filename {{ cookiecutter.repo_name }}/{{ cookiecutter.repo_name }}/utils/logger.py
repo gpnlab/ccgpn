@@ -46,7 +46,6 @@ def setup_logging(trial_config, log_config="logging.yml") -> None:
         logger = logging.getLogger("setup")
         msg= f'"{log_config}" not found. Using basicConfig.'
         logger.warning(msg)
-        return
 
     with open(log_config, "rt") as f:
         config = yaml.safe_load(f.read())

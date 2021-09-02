@@ -184,14 +184,16 @@ The directory structure of your new project looks like this:
 └── package_name                  <- package directory
     ├── __init__.py               <- Makes package_name a Python package
     ├── cli.py                    <- command line interface
-    ├── package_name.py           <- main script
+    ├── package_name.py           <- package script
+    ├── main_foo.py               <- training script for model "foo"
+    ├── main_example.py           <- training script for model "example"
     │
     ├── base                      <- abstract base classes
+    │   ├── __init__.py           <- Makes the abstract base class a Python subpackage
     │   ├── base_preprocessor.py  <- abstract base class for data preprocessing
     │   ├── base_dataset.py       <- abstract base class for datasets
     │   ├── base_augmentation.py  <- abstract base class for data albumentations
-    │   ├── base_data_loader.py   <- abstract base class for data loaders
-    │   ├── base_augmentation.py  <- abstract base class for data albumentations
+    │   ├── base_dataloader.py    <- abstract base class for data loaders
     │   ├── base_model.py         <- abstract base class for models
     │   ├── base_loss.py          <- abstract base class for losses
     │   ├── base_metric.py        <- abstract base class for metrics
@@ -207,12 +209,12 @@ The directory structure of your new project looks like this:
     │    └── backer.py            <- manages paths for saving models + logs
     │
     ├── model_foo/                <- each model is a subpackage
-    └── model_bar                 <- model "bar"
+    └── model_example               <- model "example"
          ├── __init__.py          <- Makes model_bar a Python subpackage
          ├── preprocessor.py
          ├── dataset.py
          ├── augmentation.py
-         ├── data_loader.py
+         ├── dataloader.py
          ├── loss.py
          ├── metric.py
          ├── model.py
@@ -288,15 +290,15 @@ name: A04-E03-S0004
 
 The checkpoints will be saved in
 
-`<save_dir>/<name>/<timestamp>/ckpts/ckpt_epoch-<n>_<name>_<timestamp>`,
+`<save_dir>/<trial>/<timestamp>/ckpts/ckpt_epoch-<n>_<trial>_<timestamp>`,
 
-where `<save_dir>` and `<name>` are as defined in the config file, `<n>` is an
+where `<save_dir>` and `<trial>` are as defined in the config file, `<n>` is an
 integer identifying the checkpoint, and timestamp is a datetime footprint in
 the `YYYYMMDDhhmmssUTC` format, with year (`YYYY`), month (`MM`), day (`DD`),
 hour (`hh`), minute (`mm`), second (`ss`), all according to the Coordinated
 Universtal Time (`UTC`) standard. A copy of config file will be saved in
 
-`<save_dir>/<name>/<timestamp>/etc/config_<name>_<timestamp>.yml`.
+`<save_dir>/<trial>/<timestamp>/etc/config_<trial>_<timestamp>.yml`.
 
 **Note**: checkpoints contain:
 

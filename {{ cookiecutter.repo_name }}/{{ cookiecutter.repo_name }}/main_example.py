@@ -14,14 +14,14 @@ import torch.nn as nn
 from {{ cookiecutter.repo_name }}.utils import set_seed
 from {{ cookiecutter.repo_name }}.utils import setup_logger
 
-from {{ cookiecutter.package_name }}.model_example import model_arch
-from {{ cookiecutter.package_name }}.model_example import model_optimizer
-from {{ cookiecutter.package_name }}.model_example import model_scheduler
-from {{ cookiecutter.package_name }}.model_example import model_augmentation
-from {{ cookiecutter.package_name }}.model_example import model_dataloader
-from {{ cookiecutter.package_name }}.model_example import model_loss
-from {{ cookiecutter.package_name }}.model_example import model_metric
-from {{ cookiecutter.package_name }}.model_example import Trainer
+from {{ cookiecutter.package_name }}.model_example import example_Arch
+from {{ cookiecutter.package_name }}.model_example import example_Optimizer
+from {{ cookiecutter.package_name }}.model_example import example_Scheduler
+from {{ cookiecutter.package_name }}.model_example import example_Augmentation
+from {{ cookiecutter.package_name }}.model_example import example_Dataloader
+from {{ cookiecutter.package_name }}.model_example import example_loss
+from {{ cookiecutter.package_name }}.model_example import example_metric
+from {{ cookiecutter.package_name }}.model_example import example_Trainer
 
 
 logger = setup_logger(__name__)
@@ -194,7 +194,7 @@ def train(cfg: Dict, resume_path: str) -> None:
     metrics = [getattr(model_metric, metric) for metric in cfg['metrics']]
 
     logger.info('Initialising trainer')
-    trainer = Trainer(model, loss, metrics, optimizer,
+    trainer = Trainer(model, optimizer, loss, metrics,
                       start_epoch=start_epoch,
                       config=cfg,
                       device=device,

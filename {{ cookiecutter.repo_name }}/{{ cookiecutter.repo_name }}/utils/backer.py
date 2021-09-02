@@ -4,12 +4,12 @@
 # Manages Paths for Saving Models and Logs
 
 from pathlib import Path
-import datetime
 from os.path import join as pjoin
 
 import {{ cookiecutter.repo_name }} as pkg
 root = Path(pkg.__path__[0]).parent.absolute()
 
+ETC_DIR = "etc"
 LOG_DIR = "logs"
 CHECKPOINT_DIR = "ckpts"
 RUN_DIR = "runs"
@@ -29,7 +29,7 @@ def trial_path(config: dict) -> Path:
     Construct a path based on the name of a configuration file,
     e.g. 'trials/A01-E01-S0001'
     """
-    p = pjoin(root, config["save_dir"], config["name"])
+    p = pjoin(root, config["save_dir"], config["trial_info"]["ID"])
     return ensure_exists(p)
 
 
@@ -38,8 +38,16 @@ def trial_timestamp_path(config: dict) -> Path:
     Construct a path based on the name of a configuration file and append a
     timestamp, e.g. 'trials/A01-E01-S0001/20211231235959UTC'
     """
-    start_time = datetime.datetime.utcnow().strftime("%Y%m%d%H%M%S")
-    p = pjoin(trial_path(config), start_time + "UTC")
+    timestamp = config["trial_info"]["timestamp"]
+    p = pjoin(trial_path(config), timestamp)
+    return ensure_exists(p)
+
+
+def etc_path(config: dict) -> Path:
+    """
+    Retuns the config dir, e.g. 'trials/A01-E01-S0001/20211231235959UTC/etc'
+    """
+    p = pjoin(trial_timestamp_path(config), ETC_DIR)
     return ensure_exists(p)
 
 
