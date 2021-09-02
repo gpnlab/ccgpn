@@ -5,7 +5,8 @@ import math
 import yaml
 import torch
 
-from {{ cookiecutter.repo_name }}.utils import setup_logger, etc_path, trainer_paths, TensorboardWriter
+from {{ cookiecutter.repo_name }}.utils import setup_logger, TensorboardWriter
+from {{ cookiecutter.repo_name }}.utils import etc_path, trainer_paths
 
 
 logger = setup_logger(__name__)
@@ -43,40 +44,55 @@ class BaseTrainer:
         """
         Full training logic
         """
-        logger.info('Start training...')
+        logger.info('Start training ...')
         for epoch in range(self.start_epoch, self.epochs):
             result = self._train_epoch(epoch)
 
-            # save logged informations into log dict
+            # Save logged informations into log dict
+            # `results` has as keys: epoch, the metrics, and others
             results = {'epoch': epoch}
             for key, value in result.items():
+                # Update the value of each metric in the result dict of the
+                # current epoch. Each metric has its on entry in results dict
                 if key == 'metrics':
-                    results.update({
-                        mtr.__name__: value[i] for i, mtr in enumerate(self.metrics)})
+                    results.update({mtr.__name__: value[i]
+                                    for i, mtr in enumerate(self.metrics)})
+
                 elif key == 'val_metrics':
-                    results.update({
-                        'val_' + mtr.__name__: value[i] for
-                        i, mtr in enumerate(self.metrics)
-                    })
+                    results.update({'val_' + mtr.__name__: value[i]
+                                    for i, mtr in enumerate(self.metrics)})
                 else:
                     results[key] = value
 
-            # print logged informations to the screen
+            # Print logged informations to the screen
             for key, value in results.items():
                 logger.info(f'{str(key):15s}: {value}')
 
-            # evaluate model performance according to configured metric,
-            # save best checkpoint as model_best
+            # Evaluate model performance according to configured metric, save
+            # best checkpoint as model_best
             best = False
             if self.mnt_mode != 'off':
                 try:
-                    # check whether model performance improved or not, according
-                    # to specified metric(mnt_metric)
-                    improved = (self.mnt_mode == 'min' and results[self.mnt_metric] < self.mnt_best) or\
-                               (self.mnt_mode == 'max' and results[self.mnt_metric] > self.mnt_best)
+                    # Check whether model performance improved or not,
+                    # according to specified metric(mnt_metric)
+                    if self.mnt_mode == 'min':
+                        if results[self.mnt_metric] < self.mnt_best):
+                            improved = True
+                        else
+                            improved = False
+                    elif self.mnt_mode == 'max':
+                        if results[self.mnt_metric] > self.mnt_best):
+                            improved = True
+                        else
+                            improved = False
+                    # Never reached conditional. Added for readability
+                    else
+                        improved = False
+
                 except KeyError:
-                    logger.warning(f"Warning: Metric '{self.mnt_metric}' is not found. Model "
-                                        "performance monitoring is disabled.")
+                    msg = (f"Warning: Metric '{self.mnt_metric}' is not found."
+                           " Model performance monitoring is disabled.")
+                    logger.warning(msg)
                     self.mnt_mode = 'off'
                     improved = False
                     not_improved_count = 0
@@ -89,16 +105,23 @@ class BaseTrainer:
                     not_improved_count += 1
 
                 if not_improved_count > self.early_stop:
-                    logger.info(f"Validation performance didn\'t improve for {self.early_stop} "
-                                     "epochs. Training stops.")
+                    msg = (f"Validation performance didn\'t improve for "
+                           f"{self.early_stop} epochs. Training stops.")
+                    logger.info(msg)
                     break
 
             if epoch % self.save_period == 0:
                 self._save_checkpoint(epoch, save_best=best)
 
+
     def _train_epoch(self, epoch: int) -> dict:
         """
         Training logic for an epoch.
+
+        Returns
+        -------
+        Returns a dictionary with the results of this run, like the value for
+        each metric, etc
         """
         raise NotImplementedError
 
@@ -106,9 +129,11 @@ class BaseTrainer:
         """
         Saving checkpoints
 
-        :param epoch: current epoch number
-        :param log: logging information of the epoch
-        :param save_best: if True, rename the saved checkpoint to 'model_best.pth'
+        Parameters
+        ----------
+        epoch : current epoch number
+        log : logging information of the epoch
+        save_best : if True, rename the saved checkpoint to 'model_best.pth'
         """
         model = type(self.model).__name__
         state = {
@@ -119,13 +144,14 @@ class BaseTrainer:
             'monitor_best': self.mnt_best,
             'config': self.config
         }
-        filename = self.checkpoint_dir / f'ckpt_epoch-{epoch}.pth'
+        filename = pjoin(self.checkpoint_dir, f'ckpt_epoch-{epoch}.pth')
         torch.save(state, filename)
         logger.info(f"Saving checkpoint: {filename} ...")
         if save_best:
-            best_path = self.checkpoint_dir / 'model_best.pth'
+            best_path = pjoin(self.checkpoint_dir, 'model_best.pth')
             torch.save(state, best_path)
             logger.info(f'Saving current best: {best_path}')
+
 
     def _setup_monitoring(self, config: dict) -> None:
         """
@@ -148,7 +174,6 @@ class AverageMeter:
     """
     Computes and stores the average and current value.
     """
-
     def __init__(self, name):
         self.name = name
         self.reset()
