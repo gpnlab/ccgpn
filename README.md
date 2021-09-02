@@ -1,8 +1,11 @@
-<p align="center"><img src="./docs/docs/ccgpn-logo.png" height="960" width="480"/></p>
+![ccgpn-logo](./docs/docs/ccgpn-logo.png)
 
-<center> <h1>__Cookiecutter GPN:__ A flexible project structure for implementing and sharing machine learning models.</h1></center>
+## **Cookiecutter GPN:**
 
-<h4><p style="text-align:right;">Project GitHub Repo: <a href=https://github.com/gpnlab/ccgpn/>https://github.com/gpnlab/ccgpn</a></p></h4>
+### A flexible project structure for implementing and sharing machine learning models.
+
+#### Project GitHub Repo: [https://github.com/gpnlab/ccgpn/](https://github.com/gpnlab/ccgpn)
+--------------------
 
 The recommendations we make here follow the standards and conventions of much
 of the scientific Python eco-system. Following these standards and
@@ -190,17 +193,15 @@ The directory structure of your new project looks like this:
     │
     ├── base                      <- abstract base classes
     │   ├── __init__.py           <- Makes the abstract base class a Python subpackage
-    │   ├── base_preprocessor.py  <- abstract base class for data preprocessing
-    │   ├── base_transform.py     <- abstract base class for data albumentations
+    │   ├── base_transform.py     <- abstract base class for data transformations
     │   ├── base_dataset.py       <- abstract base class for datasets
     │   ├── base_dataloader.py    <- abstract base class for data loaders
-    │   ├── base_model.py         <- abstract base class for models
+    │   ├── base_arch.py          <- abstract base class for models' archtectures
     │   ├── base_loss.py          <- abstract base class for losses
     │   ├── base_metric.py        <- abstract base class for metrics
     │   ├── base_optimizer.py     <- abstract base class for optimizers
     │   ├── base_scheduler.py     <- abstract base class for schedulers
-    │   ├── base_trainer.py       <- abstract base class for trainers
-    │   └── base_postprocessor.py <- abstract base class for data post-processing
+    │   └── base_trainer.py       <- abstract base class for trainers
     │
     ├── utils                     <- utilities
     │    ├── seeder.py            <- manages reproducibility
@@ -211,17 +212,15 @@ The directory structure of your new project looks like this:
     ├── model_foo/                <- each model is a subpackage
     └── model_example               <- model "example"
          ├── __init__.py          <- Makes model_bar a Python subpackage
-         ├── preprocessor.py
          ├── dataset.py
-         ├── augmentation.py
+         ├── transform.py
          ├── dataloader.py
          ├── loss.py
          ├── metric.py
-         ├── model.py
+         ├── arch.py
          ├── optimizer.py
          ├── scheduler.py
-         ├── trainer.py
-         └── postprocessor.py
+         └── trainer.py
 
 ```
 ### Config file format
@@ -955,7 +954,7 @@ may help you out.
 
 ### Acknowledgements
 ------------
-![reivent the wheel](./docs/docs/reivent_the_wheel.png)
+![reinvent the wheel](./docs/docs/reinvent_the_wheel.png)
 
 Many thanks to the
 [Cookiecutter](https://cookiecutter.readthedocs.org/en/latest/) project
