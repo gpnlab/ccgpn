@@ -747,7 +747,7 @@ configuration file is in `docs/conf.py`.
 
 ### Testing
 ------------
-![TDD]('./tdd.jpeg')
+![TDD](./tdd.jpeg)
 
 Most scientists who write software constantly test their code. That is, if you
 are a scientist writing software, I am sure that you have tried to see how well
