@@ -1,24 +1,8 @@
 <p align="center"><img src="ccgpn-logo.png" height="960" width="480"/></p>
 
-<center> <h1>__Cookiecutter GPN:__ A flexible project structure for implementing and sharing machine learning models.</h1></center>
+<center> <h1>__Cookiecutter GPN:__ A flexible template for implementing and sharing machine learning models.</h1></center>
 
 <h4><p style="text-align:right;">Project GitHub Repo: <a href=https://github.com/gpnlab/ccgpn/>https://github.com/gpnlab/ccgpn</a></p></h4>
-
-The recommendations we make here follow the standards and conventions of much
-of the scientific Python eco-system. Following these standards and
-recommendations will make it easier
-- for others to use your code,
-- to port your code into other projects
-- to collaborate with other users of this eco-system,
-- to learn about the analysis process and the domain, and
-- to feel confident in analysis conclusions.
-We're not talking about bikeshedding the indentation aesthetics or pedantic
-formatting standards — ultimately, data science code quality is about
-correctness and reproducibility.
-
-Just Python? Your analysis doesn't have to be in Python, but the template does provide
-some Python boilerplate that you'd want to remove (in the `package_name` folder
-for example, and the Sphinx documentation skeleton in `docs`).
 
 Why this template? A well-defined, standard project structure means that a
 newcomer can begin to understand an analysis without digging in to extensive
@@ -33,9 +17,27 @@ Unix-like systems. The `/etc` directory has a very specific purpose, as does
 the `/tmp` folder, and everybody (more or less) agrees to honor that social
 contract. That means a Red Hat user and an Ubuntu user both know roughly where
 to look for certain types of files, even when using each other's system — or
-any other standards-compliant system for that matter!
+any other standards-compliant system for that matter! Ideally, that's how it
+should be when a colleague opens up your data science project.
 
-Ideally, that's how it should be when a colleague opens up your data science project.
+The recommendations we make here follow the standards and conventions of much
+of the scientific Python eco-system. Following these standards and
+recommendations will make it easier
+
+ * for others to use your code,
+ * to port your code into other projects
+ * to collaborate with other users of this eco-system,
+ * to learn about the analysis process and the domain, and
+ * to feel confident in analysis conclusions.
+
+We're not talking about bikeshedding the indentation aesthetics or pedantic
+formatting standards — ultimately, data science code quality is about
+correctness and reproducibility.
+
+Just Python? Your analysis doesn't have to be in Python, but the template does
+provide some Python boilerplate that you'd want to remove (in the
+`package_name` folder for example, and the Sphinx documentation skeleton in
+`docs`).
 
 Disagree with a couple of the default folder names? Working on a project that's
 a little nonstandard and doesn't exactly fit with the current structure? Prefer
@@ -46,11 +48,11 @@ starting point for many projects.
 
 ![standards](./standards.png)
 
-### Requirements to use the cookiecutter template:
+### Requirements to use this cookiecutter:
 -----------
  - Python 2.7 or 3.8+
- - PyTorch >= 1.8
- - Tensorboard >= 1.4
+ - PyTorch >= 1.9
+ - Tensorboard >= 2.6
  - [Cookiecutter Python package](http://cookiecutter.readthedocs.org/en/latest/installation.html) >= 1.7.0:
  - This can be installed with pip by or conda depending on how you manage your Python packages:
 
@@ -311,8 +313,7 @@ checkpoint = {
 
 ### Tensorboard Visualization
 --------------------------
-This template supports `<https://pytorch.org/docs/stable/tensorboard.html>`
-visualization.
+This template supports [Tensorboard visualization](https://pytorch.org/docs/stable/tensorboard.html)
 
 1. Run training
 
@@ -331,15 +332,16 @@ template are basically wrappers for those of `tensorboard.SummaryWriter`
 module.
 
 **Note**: You don't have to specify current steps, since `TensorboardWriter`
-class defined at `logger/monitor.py` will track current steps.
+class defined at `logger/monitor.py` will track current steps automatically.
 
 ## Repository Structure
 ------------
 Features:
-* Clearfolder structure which is suitable for many deep learning projects.
-* Runs are configured via ``.yml`` files allowing for easy experimentation.
-* Checkpoint saving and resuming.
-* Tensorboard logging
+
+ * Clearfolder structure which is suitable for many deep learning projects.
+ * Runs are configured via ``.yml`` files allowing for easy experimentation.
+ * Checkpoint saving and resuming.
+ * Tensorboard logging
 
 We now examine the newly created repository in more detail.
 
@@ -354,21 +356,19 @@ to run all of the steps every time you want to make a new figure, but anyone
 should be able to reproduce the final products with only the code in `package_name`
 and the data in `data/raw`.
 
-**Analysis (is) should be a DAG**. Ever tried to reproduce an analysis that you
+**Analysis should be a DAG**. Ever tried to reproduce an analysis that you
 did a few months ago or even a few years ago? You may have written the code,
 but it's now impossible to decipher whether you should use
 `make_figures.py.old`, `make_figures_working.py` or `new_make_figures01.py` to
 get things done. Here are some questions we've learned to ask with a sense of
 existential dread:
-* Are we supposed to go in and join the column X to the data before we get
+
+ * Are we supposed to go in and join the column X to the data before we get
   started or did that come from one of the notebooks?
-
-* Come to think of it, which notebook do we have to run first before running
+ * Come to think of it, which notebook do we have to run first before running
   the plotting code: was it "process data" or "clean data"?
-
-* Where did the shapefiles get downloaded from for the geographic plots?
-
-* _Et cetera, times infinity._
+ * Where did the shapefiles get downloaded from for the geographic plots?
+ * $\textrm{\textit{etc.}}\cdot \infty$
 
 These types of questions are painful and are symptoms of a disorganized
 project. A good project structure encourages practices that make it easier to
@@ -432,8 +432,8 @@ aws_access_key_id=myprojectaccesskey
 aws_secret_access_key=myprojectsecretkey
 ```
 You can add the profile name when initialising a project; assuming no
-applicable environment variables are set, the profile credentials will be used
-by default.
+applicable environment variables are set, the default profile credentials will
+be used.
 
 Finally, a handy code snippet to get the standard file-system location for the
 `data` folder:
@@ -477,11 +477,11 @@ libraries, and the same versions to make everything play nicely together.
 
 One effective approach to this is use a virtual environment . We included a
 target in the Makefile (`make create_environment`) which will create a `conda`
-(see [`Miniconda`](http://conda.pydata.org/miniconda.html) software
+environment (see [`Miniconda`](http://conda.pydata.org/miniconda.html) software
 distribution, not to be confused with
 [`Anaconda`](https://store.continuum.io/cshop/anaconda/), though they are
-similar and both produced by Continuum) environment if conda is installed, else
-create a [virtualenv](https://virtualenv.pypa.io/en/latest/)
+similar and both produced by Continuum) if conda is installed, else create a
+[virtualenv](https://virtualenv.pypa.io/en/latest/)
 ([virtualenvwrapper](https://virtualenvwrapper.readthedocs.org/en/latest/) is
 recommended for managing virtualenvs).
 
@@ -524,7 +524,7 @@ formats (Dockerfile and Vagrantfile, respectively) you can easily add to source
 control to describe how to create a container with the requirements you
 need.
 
-### Installation
+### Making the Repository an Installable Package
 ------------
 
 For installation and distribution we will use the python standard library
@@ -560,10 +560,7 @@ configuration of your testing environment. This includes the different
 environments in which you will test the source code (for example, we test
 `package_name` against Python 2.7, Python 3.7 and Python 3.8). It includes steps
 that need to be taken before installation of the software. For example,
-installation of the software dependencies. For `package_name`, we use the
-[`Miniconda`](http://conda.pydata.org/miniconda.html) software distribution (not
-to be confused with [`Anaconda`](https://store.continuum.io/cshop/anaconda/),
-though they are similar and both produced by Continuum).
+installation of the software dependencies.
 
 For details on setting up Travis-CI with github, see Travis-CI's
 [getting started
@@ -718,7 +715,7 @@ were developing the software, as well as provide some examples of usage,
 explanations of the relevant scientific concepts, and references to the relevant
 literature.
 
-To document `package_name` we use the [sphinx documentation
+To document `package_name` we use the [Sphinx documentation
 system](http://sphinx-doc.org/). You can follow the instructions on the sphinx
 website, and the example [here](http://matplotlib.org/sampledoc/) to set up the
 system, but we have also already initialized and commited a skeleton
@@ -866,17 +863,16 @@ recommended not collaborating directly with others on Jupyter notebooks. There
 are two steps we recommend for using notebooks effectively:
 
 1. Follow a naming convention that shows the owner and the order the analysis
-   was done in. We use the format `<step>-<ghuser>-<description>.ipynb` (e.g.,
+   was done in. We use the format `<step>_<ghuser>_<description>.ipynb` (e.g.,
    `1.0-ed-visualize-distributions.ipynb`).
 
 2. Refactor the good parts. Don't write code to do the same task in multiple
    notebooks. If it's a data preprocessing task, put it in the pipeline at
-   `package_name/data/make_dataset.py` and load data from `data/interim`. If
-   it's useful utility code, refactor it to `package_name`.
+   `package_name/data` and load data from `data/interim`. If it's useful
+   utility code, refactor it to `package_name`.
 
-Now, by default we turn the project into a Python package (see the `setup.py`
-file). You can import your code and use it in notebooks with a cell like the
-following:
+Now, by default we turn the project into a Python package, so you can import
+your code and use it in notebooks with a cell like the following:
 
 ```python
 # OPTIONAL: Load the "autoreload" extension so that code can change
@@ -885,7 +881,7 @@ following:
 # OPTIONAL: always reload modules so that as you change code in src, it gets loaded
 %autoreload 2
 
-from package_name.data import make_dataset
+import package_name.data as data
 ```
 
 ### Licensing
@@ -895,7 +891,7 @@ from package_name.data import make_dataset
 License your code! A repository like this without a license maintains
 copyright to the author, but does not provide others with any
 conditions under which they can use the software. In this case, we use
-the MIT license. You can read the conditions of the license in the
+the BSD-3 license. You can read the conditions of the license in the
 `LICENSE` file. As you can see, this is not an Apple software license
 agreement (has anyone ever actually tried to read one of those?). It's
 actually all quite simple, and boils down to "You can do whatever you
@@ -922,7 +918,7 @@ under the name `stub.py`).
 In addition, you will want to provide a digital object identifier (DOI) to the
 article you want people to cite.
 
-To get a DOI, use the instructions in [this page](https://guides.github.com/activities/citable-code/)
+To get a DOI, use the instructions in [this page](https://guides.github.com/activities/citable-code/).
 
 Another way to get your software cited is by writing a paper. There are several
 [journals that publish papers about software](https://www.software.ac.uk/resources/guides/which-journals-should-i-publish-my-software).
@@ -956,15 +952,15 @@ may help you out.
 Many thanks to the
 [Cookiecutter](https://cookiecutter.readthedocs.org/en/latest/) project
 ([github](https://github.com/audreyr/cookiecutter)), which is helping us all
-spend less time molding time getting things baked.
+spend less time molding and more time getting things baked.
 
 This cookiecutter was developed abreast the awesome [Cookiecutter Data
 Science](http://drivendata.github.io/cookiecutter-data-science/)
-project([github](https://github.com/drivendata/cookiecutter-data-science)),
+project ([github](https://github.com/drivendata/cookiecutter-data-science)),
 borrowing features from
 [shablona](https://github.com/uwescience/shablona) (e.g. duecredit, travis CI) and inspired by the directory
 scaffold of
 [Cookiecutter-Pytorch](https://github.com/khornlund/cookiecutter-pytorch). Here are some examples of projects using `cookiecutter-pytorch` template:
-1. [Severstal Steel Defect Detection (Kaggle)](https://github.com/khornlund/severstal-steel-defect-detection)
-2. [Aptos Blindness Detection (Kaggle)](https://github.com/khornlund/aptos2019-blindness-detection)
-3
+ 1. [Severstal Steel Defect Detection (Kaggle)](https://github.com/khornlund/severstal-steel-defect-detection)
+ 2. [Aptos Blindness Detection (Kaggle)](https://github.com/khornlund/aptos2019-blindness-detection)
+ 3
