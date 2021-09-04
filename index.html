@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#requirements-to-use-the-cookiecutter-template" class="md-skip">
+        <a href="#requirements-to-use-this-cookiecutter" class="md-skip">
           Skip to content
         </a>
       
@@ -232,8 +232,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#requirements-to-use-the-cookiecutter-template" class="md-nav__link">
-    Requirements to use the cookiecutter template:
+  <a href="#requirements-to-use-this-cookiecutter" class="md-nav__link">
+    Requirements to use this cookiecutter:
   </a>
   
 </li>
@@ -331,8 +331,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    Installation
+  <a href="#making-the-repository-an-installable-package" class="md-nav__link">
+    Making the Repository an Installable Package
   </a>
   
 </li>
@@ -458,8 +458,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#requirements-to-use-the-cookiecutter-template" class="md-nav__link">
-    Requirements to use the cookiecutter template:
+  <a href="#requirements-to-use-this-cookiecutter" class="md-nav__link">
+    Requirements to use this cookiecutter:
   </a>
   
 </li>
@@ -557,8 +557,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    Installation
+  <a href="#making-the-repository-an-installable-package" class="md-nav__link">
+    Making the Repository an Installable Package
   </a>
   
 </li>
@@ -671,23 +671,9 @@
                 
                 <p align="center"><img src="ccgpn-logo.png" height="960" width="480"/></p>
 
-<p><center> <h1><strong>Cookiecutter GPN:</strong> A flexible project structure for implementing and sharing machine learning models.</h1></center></p>
+<p><center> <h1><strong>Cookiecutter GPN:</strong> A flexible template for implementing and sharing machine learning models.</h1></center></p>
 <h4><p style="text-align:right;">Project GitHub Repo: <a href=https://github.com/gpnlab/ccgpn/>https://github.com/gpnlab/ccgpn</a></p></h4>
 
-<p>The recommendations we make here follow the standards and conventions of much
-of the scientific Python eco-system. Following these standards and
-recommendations will make it easier
-- for others to use your code,
-- to port your code into other projects
-- to collaborate with other users of this eco-system,
-- to learn about the analysis process and the domain, and
-- to feel confident in analysis conclusions.
-We're not talking about bikeshedding the indentation aesthetics or pedantic
-formatting standards — ultimately, data science code quality is about
-correctness and reproducibility.</p>
-<p>Just Python? Your analysis doesn't have to be in Python, but the template does provide
-some Python boilerplate that you'd want to remove (in the <code>package_name</code> folder
-for example, and the Sphinx documentation skeleton in <code>docs</code>).</p>
 <p>Why this template? A well-defined, standard project structure means that a
 newcomer can begin to understand an analysis without digging in to extensive
 documentation. It also means that they don't necessarily have to read 100% of
@@ -700,20 +686,37 @@ Unix-like systems. The <code>/etc</code> directory has a very specific purpose, 
 the <code>/tmp</code> folder, and everybody (more or less) agrees to honor that social
 contract. That means a Red Hat user and an Ubuntu user both know roughly where
 to look for certain types of files, even when using each other's system — or
-any other standards-compliant system for that matter!</p>
-<p>Ideally, that's how it should be when a colleague opens up your data science project.</p>
+any other standards-compliant system for that matter! Ideally, that's how it
+should be when a colleague opens up your data science project.</p>
+<p>The recommendations we make here follow the standards and conventions of much
+of the scientific Python eco-system. Following these standards and
+recommendations will make it easier</p>
+<ul>
+<li>for others to use your code,</li>
+<li>to port your code into other projects</li>
+<li>to collaborate with other users of this eco-system,</li>
+<li>to learn about the analysis process and the domain, and</li>
+<li>to feel confident in analysis conclusions.</li>
+</ul>
+<p>We're not talking about bikeshedding the indentation aesthetics or pedantic
+formatting standards — ultimately, data science code quality is about
+correctness and reproducibility.</p>
+<p>Just Python? Your analysis doesn't have to be in Python, but the template does
+provide some Python boilerplate that you'd want to remove (in the
+<code>package_name</code> folder for example, and the Sphinx documentation skeleton in
+<code>docs</code>).</p>
 <p>Disagree with a couple of the default folder names? Working on a project that's
 a little nonstandard and doesn't exactly fit with the current structure? Prefer
 to use a different package than one of the (few) defaults?</p>
 <p><strong>Go for it!</strong> This is a lightweight structure, and is intended to be a good
 starting point for many projects.</p>
 <p><img alt="standards" src="standards.png" /></p>
-<h3 id="requirements-to-use-the-cookiecutter-template">Requirements to use the cookiecutter template:</h3>
+<h3 id="requirements-to-use-this-cookiecutter">Requirements to use this cookiecutter:</h3>
 <hr />
 <ul>
 <li>Python 2.7 or 3.8+</li>
-<li>PyTorch &gt;= 1.8</li>
-<li>Tensorboard &gt;= 1.4</li>
+<li>PyTorch &gt;= 1.9</li>
+<li>Tensorboard &gt;= 2.6</li>
 <li><a href="http://cookiecutter.readthedocs.org/en/latest/installation.html">Cookiecutter Python package</a> &gt;= 1.7.0:</li>
 <li>This can be installed with pip by or conda depending on how you manage your Python packages:</li>
 </ul>
@@ -946,8 +949,7 @@ Universtal Time (<code>UTC</code>) standard. A copy of config file will be saved
 </code></pre>
 <h3 id="tensorboard-visualization">Tensorboard Visualization</h3>
 <hr />
-<p>This template supports <code>&lt;https://pytorch.org/docs/stable/tensorboard.html&gt;</code>
-visualization.</p>
+<p>This template supports <a href="https://pytorch.org/docs/stable/tensorboard.html">Tensorboard visualization</a></p>
 <ol>
 <li>Run training</li>
 </ol>
@@ -968,14 +970,16 @@ in the <code>trainer._train_epoch</code> method. <code>add_something()</code> me
 template are basically wrappers for those of <code>tensorboard.SummaryWriter</code>
 module.</p>
 <p><strong>Note</strong>: You don't have to specify current steps, since <code>TensorboardWriter</code>
-class defined at <code>logger/monitor.py</code> will track current steps.</p>
+class defined at <code>logger/monitor.py</code> will track current steps automatically.</p>
 <h2 id="repository-structure">Repository Structure</h2>
 <hr />
-<p>Features:
-* Clearfolder structure which is suitable for many deep learning projects.
-* Runs are configured via <code>.yml</code> files allowing for easy experimentation.
-* Checkpoint saving and resuming.
-* Tensorboard logging</p>
+<p>Features:</p>
+<ul>
+<li>Clearfolder structure which is suitable for many deep learning projects.</li>
+<li>Runs are configured via <code>.yml</code> files allowing for easy experimentation.</li>
+<li>Checkpoint saving and resuming.</li>
+<li>Tensorboard logging</li>
+</ul>
 <p>We now examine the newly created repository in more detail.</p>
 <h3 id="data"><code>data</code></h3>
 <hr />
@@ -986,25 +990,19 @@ move the raw data through a pipeline to your final analysis. You shouldn't have
 to run all of the steps every time you want to make a new figure, but anyone
 should be able to reproduce the final products with only the code in <code>package_name</code>
 and the data in <code>data/raw</code>.</p>
-<p><strong>Analysis (is) should be a DAG</strong>. Ever tried to reproduce an analysis that you
+<p><strong>Analysis should be a DAG</strong>. Ever tried to reproduce an analysis that you
 did a few months ago or even a few years ago? You may have written the code,
 but it's now impossible to decipher whether you should use
 <code>make_figures.py.old</code>, <code>make_figures_working.py</code> or <code>new_make_figures01.py</code> to
 get things done. Here are some questions we've learned to ask with a sense of
-existential dread:
-* Are we supposed to go in and join the column X to the data before we get
-  started or did that come from one of the notebooks?</p>
+existential dread:</p>
 <ul>
-<li>
-<p>Come to think of it, which notebook do we have to run first before running
-  the plotting code: was it "process data" or "clean data"?</p>
-</li>
-<li>
-<p>Where did the shapefiles get downloaded from for the geographic plots?</p>
-</li>
-<li>
-<p><em>Et cetera, times infinity.</em></p>
-</li>
+<li>Are we supposed to go in and join the column X to the data before we get
+  started or did that come from one of the notebooks?</li>
+<li>Come to think of it, which notebook do we have to run first before running
+  the plotting code: was it "process data" or "clean data"?</li>
+<li>Where did the shapefiles get downloaded from for the geographic plots?</li>
+<li>$\textrm{\textit{etc.}}\cdot \infty$</li>
 </ul>
 <p>These types of questions are painful and are symptoms of a disorganized
 project. A good project structure encourages practices that make it easier to
@@ -1064,8 +1062,8 @@ aws_access_key_id=myprojectaccesskey
 aws_secret_access_key=myprojectsecretkey
 </code></pre>
 <p>You can add the profile name when initialising a project; assuming no
-applicable environment variables are set, the profile credentials will be used
-by default.</p>
+applicable environment variables are set, the default profile credentials will
+be used.</p>
 <p>Finally, a handy code snippet to get the standard file-system location for the
 <code>data</code> folder:</p>
 <pre><code class="language-python">import os.path as op
@@ -1099,11 +1097,11 @@ computational environment it was run in. You need the same tools, the same
 libraries, and the same versions to make everything play nicely together.</p>
 <p>One effective approach to this is use a virtual environment . We included a
 target in the Makefile (<code>make create_environment</code>) which will create a <code>conda</code>
-(see <a href="http://conda.pydata.org/miniconda.html"><code>Miniconda</code></a> software
+environment (see <a href="http://conda.pydata.org/miniconda.html"><code>Miniconda</code></a> software
 distribution, not to be confused with
 <a href="https://store.continuum.io/cshop/anaconda/"><code>Anaconda</code></a>, though they are
-similar and both produced by Continuum) environment if conda is installed, else
-create a <a href="https://virtualenv.pypa.io/en/latest/">virtualenv</a>
+similar and both produced by Continuum) if conda is installed, else create a
+<a href="https://virtualenv.pypa.io/en/latest/">virtualenv</a>
 (<a href="https://virtualenvwrapper.readthedocs.org/en/latest/">virtualenvwrapper</a> is
 recommended for managing virtualenvs).</p>
 <p>By listing all of your requirements in the repository (we include a
@@ -1147,7 +1145,7 @@ a container-based approach such as <a href="https://www.docker.com/">Docker</a> 
 formats (Dockerfile and Vagrantfile, respectively) you can easily add to source
 control to describe how to create a container with the requirements you
 need.</p>
-<h3 id="installation">Installation</h3>
+<h3 id="making-the-repository-an-installable-package">Making the Repository an Installable Package</h3>
 <hr />
 <p>For installation and distribution we will use the python standard library
 <code>setuptools</code> module. This module uses a <code>setup.py</code> file to figure out how to
@@ -1177,10 +1175,7 @@ configuration of your testing environment. This includes the different
 environments in which you will test the source code (for example, we test
 <code>package_name</code> against Python 2.7, Python 3.7 and Python 3.8). It includes steps
 that need to be taken before installation of the software. For example,
-installation of the software dependencies. For <code>package_name</code>, we use the
-<a href="http://conda.pydata.org/miniconda.html"><code>Miniconda</code></a> software distribution (not
-to be confused with <a href="https://store.continuum.io/cshop/anaconda/"><code>Anaconda</code></a>,
-though they are similar and both produced by Continuum).</p>
+installation of the software dependencies.</p>
 <p>For details on setting up Travis-CI with github, see Travis-CI's
 <a href="https://docs.travis-ci.com/user/getting-started/#To-get-started-with-Travis-CI%3A">getting started
 page</a>.
@@ -1319,7 +1314,7 @@ you to provide more elaborate explanations of the decisions you made when you
 were developing the software, as well as provide some examples of usage,
 explanations of the relevant scientific concepts, and references to the relevant
 literature.</p>
-<p>To document <code>package_name</code> we use the <a href="http://sphinx-doc.org/">sphinx documentation
+<p>To document <code>package_name</code> we use the <a href="http://sphinx-doc.org/">Sphinx documentation
 system</a>. You can follow the instructions on the sphinx
 website, and the example <a href="http://matplotlib.org/sampledoc/">here</a> to set up the
 system, but we have also already initialized and commited a skeleton
@@ -1444,26 +1439,25 @@ are two steps we recommend for using notebooks effectively:</p>
 <ol>
 <li>
 <p>Follow a naming convention that shows the owner and the order the analysis
-   was done in. We use the format <code>&lt;step&gt;-&lt;ghuser&gt;-&lt;description&gt;.ipynb</code> (e.g.,
+   was done in. We use the format <code>&lt;step&gt;_&lt;ghuser&gt;_&lt;description&gt;.ipynb</code> (e.g.,
    <code>1.0-ed-visualize-distributions.ipynb</code>).</p>
 </li>
 <li>
 <p>Refactor the good parts. Don't write code to do the same task in multiple
    notebooks. If it's a data preprocessing task, put it in the pipeline at
-   <code>package_name/data/make_dataset.py</code> and load data from <code>data/interim</code>. If
-   it's useful utility code, refactor it to <code>package_name</code>.</p>
+   <code>package_name/data</code> and load data from <code>data/interim</code>. If it's useful
+   utility code, refactor it to <code>package_name</code>.</p>
 </li>
 </ol>
-<p>Now, by default we turn the project into a Python package (see the <code>setup.py</code>
-file). You can import your code and use it in notebooks with a cell like the
-following:</p>
+<p>Now, by default we turn the project into a Python package, so you can import
+your code and use it in notebooks with a cell like the following:</p>
 <pre><code class="language-python"># OPTIONAL: Load the &quot;autoreload&quot; extension so that code can change
 %load_ext autoreload
 
 # OPTIONAL: always reload modules so that as you change code in src, it gets loaded
 %autoreload 2
 
-from package_name.data import make_dataset
+import package_name.data as data
 </code></pre>
 <h3 id="licensing">Licensing</h3>
 <hr />
@@ -1471,7 +1465,7 @@ from package_name.data import make_dataset
 <p>License your code! A repository like this without a license maintains
 copyright to the author, but does not provide others with any
 conditions under which they can use the software. In this case, we use
-the MIT license. You can read the conditions of the license in the
+the BSD-3 license. You can read the conditions of the license in the
 <code>LICENSE</code> file. As you can see, this is not an Apple software license
 agreement (has anyone ever actually tried to read one of those?). It's
 actually all quite simple, and boils down to "You can do whatever you
@@ -1493,7 +1487,7 @@ update it from duecredit itself. It's
 under the name <code>stub.py</code>).</p>
 <p>In addition, you will want to provide a digital object identifier (DOI) to the
 article you want people to cite.</p>
-<p>To get a DOI, use the instructions in <a href="https://guides.github.com/activities/citable-code/">this page</a></p>
+<p>To get a DOI, use the instructions in <a href="https://guides.github.com/activities/citable-code/">this page</a>.</p>
 <p>Another way to get your software cited is by writing a paper. There are several
 <a href="https://www.software.ac.uk/resources/guides/which-journals-should-i-publish-my-software">journals that publish papers about software</a>.</p>
 <h3 id="contributing">Contributing</h3>
@@ -1522,17 +1516,17 @@ may help you out.</p>
 <p>Many thanks to the
 <a href="https://cookiecutter.readthedocs.org/en/latest/">Cookiecutter</a> project
 (<a href="https://github.com/audreyr/cookiecutter">github</a>), which is helping us all
-spend less time molding time getting things baked.</p>
+spend less time molding and more time getting things baked.</p>
 <p>This cookiecutter was developed abreast the awesome <a href="http://drivendata.github.io/cookiecutter-data-science/">Cookiecutter Data
 Science</a>
-project(<a href="https://github.com/drivendata/cookiecutter-data-science">github</a>),
+project (<a href="https://github.com/drivendata/cookiecutter-data-science">github</a>),
 borrowing features from
 <a href="https://github.com/uwescience/shablona">shablona</a> (e.g. duecredit, travis CI) and inspired by the directory
 scaffold of
 <a href="https://github.com/khornlund/cookiecutter-pytorch">Cookiecutter-Pytorch</a>. Here are some examples of projects using <code>cookiecutter-pytorch</code> template:
-1. <a href="https://github.com/khornlund/severstal-steel-defect-detection">Severstal Steel Defect Detection (Kaggle)</a>
-2. <a href="https://github.com/khornlund/aptos2019-blindness-detection">Aptos Blindness Detection (Kaggle)</a>
-3</p>
+ 1. <a href="https://github.com/khornlund/severstal-steel-defect-detection">Severstal Steel Defect Detection (Kaggle)</a>
+ 2. <a href="https://github.com/khornlund/aptos2019-blindness-detection">Aptos Blindness Detection (Kaggle)</a>
+ 3</p>
                 
               
               
