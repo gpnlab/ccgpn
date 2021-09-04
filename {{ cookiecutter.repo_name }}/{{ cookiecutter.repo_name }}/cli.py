@@ -3,8 +3,9 @@ import yaml
 import datetime
 import os
 import re
+from dotenv import find_dotenv, load_dotenv
 
-from {{ cookiecutter.repo_name }} import main
+from {{ cookiecutter.repo_name }} import main_example
 from {{ cookiecutter.repo_name }}.utils import setup_logging
 
 
@@ -20,15 +21,25 @@ def cli():
 @click.option('-c', '--config-filename', multiple=True,
               help=('Path to training configuration file. If multiple are '
                     'provided, runs will be executed in order'))
+@click.option('-e', '--env-variables', multiple=True,
+              help=('Environment variables\' names. Multiple variables are '
+                    'supported'))
 @click.option('-r', '--resume', default=None, type=str,
               help='path to checkpoint')
-def train_example(config_filename, resume):
+def train_example(config_filename, env_variables, resume):
     """
     Entry point to start training run(s) for model `example`.
     """
     configs = [load_config(f) for f in config_filename]
+
+    # find .env automagically by walking up directories until it's found, then
+    # load up the .env entries as environment variables
+    load_dotenv(find_dotenv())
+    env_variables = {e: os.environ.get(e) for e in env_variables}
+
     for config in configs:
         setup_logging(config)
+        config['ENV'] = env_variables
         main_example.train(config, resume)
 
 
@@ -60,6 +71,7 @@ def load_config(filename: str) -> dict:
     config['trial_info'] = trial_info
 
     return config
+
 
 def get_timestamp() -> str:
     """
