@@ -24,11 +24,11 @@ The recommendations we make here follow the standards and conventions of much
 of the scientific Python eco-system. Following these standards and
 recommendations will make it easier
 
- * for others to use your code,
- * to port your code into other projects
- * to collaborate with other users of this eco-system,
- * to learn about the analysis process and the domain, and
- * to feel confident in analysis conclusions.
+- for others to use your code,
+- to port your code into other projects
+- to collaborate with other users of this eco-system,
+- to learn about the analysis process and the domain, and
+- to feel confident in analysis conclusions.
 
 We're not talking about bikeshedding the indentation aesthetics or pedantic
 formatting standards — ultimately, data science code quality is about
@@ -50,11 +50,12 @@ starting point for many projects.
 
 ### Requirements to use this cookiecutter:
 -----------
- - Python 2.7 or 3.8+
- - PyTorch >= 1.9
- - Tensorboard >= 2.6
- - [Cookiecutter Python package](http://cookiecutter.readthedocs.org/en/latest/installation.html) >= 1.7.0:
- - This can be installed with pip by or conda depending on how you manage your Python packages:
+
+- Python 2.7 or 3.8+
+- PyTorch >= 1.9
+- Tensorboard >= 2.6
+- [Cookiecutter Python package](http://cookiecutter.readthedocs.org/en/latest/installation.html) >= 1.7.0:
+- This can be installed with pip by or conda depending on how you manage your Python packages:
 
 ``` bash
 $ pip install cookiecutter
@@ -68,7 +69,7 @@ $ conda install cookiecutter
 ### To start a new project, run:
 ------------
 ```bash
-cookiecutter -c v1 https://github.com/gpnlab/ccgpn
+cookiecutter https://github.com/gpnlab/ccgpn
 ```
 
 ### Installing development requirements
@@ -316,11 +317,8 @@ checkpoint = {
 This template supports [Tensorboard visualization](https://pytorch.org/docs/stable/tensorboard.html)
 
 1. Run training
-
 > Set `tensorboard` option in config file true.
-
 2. Open tensorboard server
-
 > Type `tensorboard --logdir <save_dir>/` at the project root, then server will
 > open at `http://localhost:6006`
 
@@ -338,11 +336,10 @@ class defined at `logger/monitor.py` will track current steps automatically.
 ------------
 Features:
 
- * Clearfolder structure which is suitable for many deep learning projects.
- * Runs are configured via ``.yml`` files allowing for easy experimentation.
- * Checkpoint saving and resuming.
- * Tensorboard logging
-
+- Clear folder structure which is suitable for many deep learning projects.
+- Runs are configured via ``.yml`` files allowing for easy experimentation.
+- Checkpoint saving and resuming.
+- Tensorboard logging
 We now examine the newly created repository in more detail.
 
 ### `data`
@@ -363,12 +360,12 @@ but it's now impossible to decipher whether you should use
 get things done. Here are some questions we've learned to ask with a sense of
 existential dread:
 
- * Are we supposed to go in and join the column X to the data before we get
-  started or did that come from one of the notebooks?
- * Come to think of it, which notebook do we have to run first before running
-  the plotting code: was it "process data" or "clean data"?
- * Where did the shapefiles get downloaded from for the geographic plots?
- * $\textrm{\textit{etc.}}\cdot \infty$
+- Are we supposed to go in and join the column X to the data before we get
+started or did that come from one of the notebooks?
+- Come to think of it, which notebook do we have to run first before running
+e plotting code: was it "process data" or "clean data"?
+- Where did the shapefiles get downloaded from for the geographic plots?
+- $\{\textrm{et cetera}\}\times \infty$
 
 These types of questions are painful and are symptoms of a disorganized
 project. A good project structure encourages practices that make it easier to
@@ -489,22 +486,17 @@ By listing all of your requirements in the repository (we include a
 `requirements.txt` file) you can easily track the packages needed to recreate
 the analysis. Here is a good workflow:
 
-* run `make create_environment` when creating a new project. This will create a
-  `conda` environment if conda available, else create `virtualenv`.
-
-* run `conda activate project_name` (or `workon project_name`) to activate the
-  virtual environment.
-
-* `pip install`/`conda install` the packages that your analysis needs.
-
-* Run `conda list --export > requirements.txt` (or `pip freeze >
-  requirements.txt`) to pin the exact package versions used to recreate the
-  analysis.
-
-* If you find you need to install another package, run `conda list --export >
-  requirements.txt` (or `pip freeze > requirements.txt`) again and commit the
-  changes to version control.
-
+- run `make create_environment` when creating a new project. This will create a
+`conda` environment if conda available, else create `virtualenv`.
+- run `conda activate project_name` (or `workon project_name`) to activate the
+virtual environment.
+- `pip install`/`conda install` the packages that your analysis needs.
+- run `conda list --export > requirements.txt` (or `pip freeze >
+requirements.txt`) to pin the exact package versions used to recreate the
+analysis.
+- If you find you need to install another package, run `conda list --export >
+requirements.txt` (or `pip freeze > requirements.txt`) again and commit the
+changes to version control.
 
 You can easily duplicate your environment and the associated dependencies with
 `conda create --name <env_name> --file requirements.txt` (or `mkvirtualenv
@@ -569,15 +561,11 @@ To summarize:
 
 1. Go to the Travis-CI [website](https://travis-ci.org/) and get a
 Travis user account, linked to your github user account.
-
 2. You will need to set up your github repo to talk to Travis.
-
 3. You will need to go back to travis-ci, and flip on the switch on that side as
 well.
-
 4. The travis output will also report to you about test coverage, if you set it up
 that way.
-
 5. You will start getting emails telling you the state of the testing suite on
 every pull request for the software, and also when you break the test suite on
 the `master` branch. That way, you can be pretty sure that the `master` is
@@ -619,13 +607,13 @@ files in the repository which help working with this repository, and which you
 could extend further:
 
 - `.gitignore` -- specifies intentionally untracked files (such as
-  compiled `*.pyc` files), which should not typically be committed to
-  git (see `man gitignore`)
+compiled `*.pyc` files), which should not typically be committed to
+git (see `man gitignore`)
 - `.mailmap` -- if any of the contributors used multiple names/email
-  addresses or his git commit identity is just an alias, you could
-  specify the ultimate name/email(s) for each contributor, so such
-  commands as `git shortlog -sn` could take them into account (see
-  `git shortlog --help`)
+addresses or his git commit identity is just an alias, you could
+specify the ultimate name/email(s) for each contributor, so such
+commands as `git shortlog -sn` could take them into account (see
+`git shortlog --help`)
 
 **Keep secrets and configuration out of version control**. You _really_ don't
 want to leak your AWS secret key or Postgres username and password on Github.
@@ -659,7 +647,6 @@ load_dotenv(dotenv_path)
 database_url = os.environ.get("DATABASE_URL")
 other_variable = os.environ.get("OTHER_VARIABLE")
 ```
-
 
 ### Styling
 ------------
@@ -863,13 +850,12 @@ recommended not collaborating directly with others on Jupyter notebooks. There
 are two steps we recommend for using notebooks effectively:
 
 1. Follow a naming convention that shows the owner and the order the analysis
-   was done in. We use the format `<step>_<ghuser>_<description>.ipynb` (e.g.,
-   `1.0-ed-visualize-distributions.ipynb`).
-
+was done in. We use the format `<step>_<ghuser>_<description>.ipynb` (e.g.,
+`1.0-ed-visualize-distributions.ipynb`).
 2. Refactor the good parts. Don't write code to do the same task in multiple
-   notebooks. If it's a data preprocessing task, put it in the pipeline at
-   `package_name/data` and load data from `data/interim`. If it's useful
-   utility code, refactor it to `package_name`.
+notebooks. If it's a data preprocessing task, put it in the pipeline at
+`package_name/data` and load data from `data/interim`. If it's useful
+utility code, refactor it to `package_name`.
 
 Now, by default we turn the project into a Python package, so you can import
 your code and use it in notebooks with a cell like the following:
@@ -940,10 +926,10 @@ Project structure and reproducibility is talked about more in the R research
 community. Here are some projects and blog posts if you're working in R that
 may help you out.
 
- - [Project Template](http://projecttemplate.net/index.html) - An R data analysis template
- - "[Designing projects](http://nicercode.github.io/blog/2013-04-05-projects/)" on Nice R Code
- - "[My research workflow](http://www.carlboettiger.info/2012/05/06/research-workflow.html)" on Carlboettiger.info
- - "[A Quick Guide to Organizing Computational Biology Projects](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000424)" in PLOS Computational Biology
+- [Project Template](http://projecttemplate.net/index.html) - An R data analysis template.
+- "[Designing projects](http://nicercode.github.io/blog/2013-04-05-projects/)" on Nice R Code.
+- "[My research workflow](http://www.carlboettiger.info/2012/05/06/research-workflow.html)" on Carlboettiger.info.
+- "[A Quick Guide to Organizing Computational Biology Projects](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000424)" in PLOS Computational Biology.
 
 ### Acknowledgements
 ------------
@@ -962,5 +948,6 @@ borrowing features from
 scaffold of
 [Cookiecutter-Pytorch](https://github.com/khornlund/cookiecutter-pytorch). Here are some examples of projects using `cookiecutter-pytorch` template:
 
- 1. [Severstal Steel Defect Detection (Kaggle)](https://github.com/khornlund/severstal-steel-defect-detection)
- 2. [Aptos Blindness Detection (Kaggle)](https://github.com/khornlund/aptos2019-blindness-detection)
+1. [Severstal Steel Defect Detection (Kaggle)](https://github.com/khornlund/severstal-steel-defect-detection)
+2. [Aptos Blindness Detection (Kaggle)](https://github.com/khornlund/aptos2019-blindness-detection)
+3. [Understanding Cloud Organization (Kaggle)](https://github.com/khornlund/understanding-cloud-organization>)
