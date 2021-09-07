@@ -14,6 +14,6 @@
     "project_homepage": "{{ cookiecutter.project_url }}",
     "travis_username": "[OPTIONAL] your travis-CI username",
     "_copy_without_render": [
-        "{{ cookiecutter.repo_name }}/docs/_templates/*"
+        "{{ cookiecutter.repo_name }}/docs/_templates"
     ]
 }
