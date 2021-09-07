@@ -25,6 +25,10 @@
         
         <link rel="stylesheet" href="assets/stylesheets/palette.3f5d1f46.min.css">
         
+          
+          
+          <meta name="theme-color" content="">
+        
       
     
     
@@ -54,7 +58,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="deep-blue" data-md-color-accent="deep-orange">
   
     
     <script>function __prefix(e){return new URL(".",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
@@ -728,7 +732,7 @@ $ conda install cookiecutter
 </code></pre>
 <h3 id="to-start-a-new-project-run">To start a new project, run:</h3>
 <hr />
-<pre><code class="language-bash">cookiecutter -c v1 https://github.com/gpnlab/ccgpn
+<pre><code class="language-bash">cookiecutter https://github.com/gpnlab/ccgpn
 </code></pre>
 <h3 id="installing-development-requirements">Installing development requirements</h3>
 <hr />
@@ -951,18 +955,16 @@ Universtal Time (<code>UTC</code>) standard. A copy of config file will be saved
 <hr />
 <p>This template supports <a href="https://pytorch.org/docs/stable/tensorboard.html">Tensorboard visualization</a></p>
 <ol>
-<li>Run training</li>
-</ol>
-<blockquote>
+<li>Run training<blockquote>
 <p>Set <code>tensorboard</code> option in config file true.</p>
 </blockquote>
-<ol>
-<li>Open tensorboard server</li>
-</ol>
-<blockquote>
+</li>
+<li>Open tensorboard server<blockquote>
 <p>Type <code>tensorboard --logdir &lt;save_dir&gt;/</code> at the project root, then server will
 open at <code>http://localhost:6006</code></p>
 </blockquote>
+</li>
+</ol>
 <p>By default, values of loss and metrics specified in config file, input images,
 and histogram of model parameters will be logged. If you need more
 visualizations, use <code>add_scalar('tag', data)</code>, <code>add_image('tag', image)</code>, etc
@@ -975,12 +977,12 @@ class defined at <code>logger/monitor.py</code> will track current steps automat
 <hr />
 <p>Features:</p>
 <ul>
-<li>Clearfolder structure which is suitable for many deep learning projects.</li>
+<li>Clear folder structure which is suitable for many deep learning projects.</li>
 <li>Runs are configured via <code>.yml</code> files allowing for easy experimentation.</li>
 <li>Checkpoint saving and resuming.</li>
-<li>Tensorboard logging</li>
+<li>Tensorboard logging
+We now examine the newly created repository in more detail.</li>
 </ul>
-<p>We now examine the newly created repository in more detail.</p>
 <h3 id="data"><code>data</code></h3>
 <hr />
 <p>Don't ever edit your raw data, especially not manually, and especially not in
@@ -998,11 +1000,11 @@ get things done. Here are some questions we've learned to ask with a sense of
 existential dread:</p>
 <ul>
 <li>Are we supposed to go in and join the column X to the data before we get
-  started or did that come from one of the notebooks?</li>
+started or did that come from one of the notebooks?</li>
 <li>Come to think of it, which notebook do we have to run first before running
-  the plotting code: was it "process data" or "clean data"?</li>
+e plotting code: was it "process data" or "clean data"?</li>
 <li>Where did the shapefiles get downloaded from for the geographic plots?</li>
-<li>$\textrm{\textit{etc.}}\cdot \infty$</li>
+<li><span class="arithmatex">\(\{\textrm{et cetera}\}\times \infty\)</span></li>
 </ul>
 <p>These types of questions are painful and are symptoms of a disorganized
 project. A good project structure encourages practices that make it easier to
@@ -1108,27 +1110,17 @@ recommended for managing virtualenvs).</p>
 <code>requirements.txt</code> file) you can easily track the packages needed to recreate
 the analysis. Here is a good workflow:</p>
 <ul>
-<li>
-<p>run <code>make create_environment</code> when creating a new project. This will create a
-  <code>conda</code> environment if conda available, else create <code>virtualenv</code>.</p>
-</li>
-<li>
-<p>run <code>conda activate project_name</code> (or <code>workon project_name</code>) to activate the
-  virtual environment.</p>
-</li>
-<li>
-<p><code>pip install</code>/<code>conda install</code> the packages that your analysis needs.</p>
-</li>
-<li>
-<p>Run <code>conda list --export &gt; requirements.txt</code> (or <code>pip freeze &gt;
-  requirements.txt</code>) to pin the exact package versions used to recreate the
-  analysis.</p>
-</li>
-<li>
-<p>If you find you need to install another package, run <code>conda list --export &gt;
-  requirements.txt</code> (or <code>pip freeze &gt; requirements.txt</code>) again and commit the
-  changes to version control.</p>
-</li>
+<li>run <code>make create_environment</code> when creating a new project. This will create a
+<code>conda</code> environment if conda available, else create <code>virtualenv</code>.</li>
+<li>run <code>conda activate project_name</code> (or <code>workon project_name</code>) to activate the
+virtual environment.</li>
+<li><code>pip install</code>/<code>conda install</code> the packages that your analysis needs.</li>
+<li>run <code>conda list --export &gt; requirements.txt</code> (or <code>pip freeze &gt;
+requirements.txt</code>) to pin the exact package versions used to recreate the
+analysis.</li>
+<li>If you find you need to install another package, run <code>conda list --export &gt;
+requirements.txt</code> (or <code>pip freeze &gt; requirements.txt</code>) again and commit the
+changes to version control.</li>
 </ul>
 <p>You can easily duplicate your environment and the associated dependencies with
 <code>conda create --name &lt;env_name&gt; --file requirements.txt</code> (or <code>mkvirtualenv
@@ -1181,27 +1173,17 @@ installation of the software dependencies.</p>
 page</a>.
 To summarize:</p>
 <ol>
-<li>
-<p>Go to the Travis-CI <a href="https://travis-ci.org/">website</a> and get a
-Travis user account, linked to your github user account.</p>
-</li>
-<li>
-<p>You will need to set up your github repo to talk to Travis.</p>
-</li>
-<li>
-<p>You will need to go back to travis-ci, and flip on the switch on that side as
-well.</p>
-</li>
-<li>
-<p>The travis output will also report to you about test coverage, if you set it up
-that way.</p>
-</li>
-<li>
-<p>You will start getting emails telling you the state of the testing suite on
+<li>Go to the Travis-CI <a href="https://travis-ci.org/">website</a> and get a
+Travis user account, linked to your github user account.</li>
+<li>You will need to set up your github repo to talk to Travis.</li>
+<li>You will need to go back to travis-ci, and flip on the switch on that side as
+well.</li>
+<li>The travis output will also report to you about test coverage, if you set it up
+that way.</li>
+<li>You will start getting emails telling you the state of the testing suite on
 every pull request for the software, and also when you break the test suite on
 the <code>master</code> branch. That way, you can be pretty sure that the <code>master</code> is
-working (or at least know when it isn't...).</p>
-</li>
+working (or at least know when it isn't...).</li>
 </ol>
 <p>You can also continuously test your code on a Windows system. This is done on
 another CI system called <a href="http://www.appveyor.com/">Appveyor</a>. In prinicple, it
@@ -1235,13 +1217,13 @@ files in the repository which help working with this repository, and which you
 could extend further:</p>
 <ul>
 <li><code>.gitignore</code> -- specifies intentionally untracked files (such as
-  compiled <code>*.pyc</code> files), which should not typically be committed to
-  git (see <code>man gitignore</code>)</li>
+compiled <code>*.pyc</code> files), which should not typically be committed to
+git (see <code>man gitignore</code>)</li>
 <li><code>.mailmap</code> -- if any of the contributors used multiple names/email
-  addresses or his git commit identity is just an alias, you could
-  specify the ultimate name/email(s) for each contributor, so such
-  commands as <code>git shortlog -sn</code> could take them into account (see
-  <code>git shortlog --help</code>)</li>
+addresses or his git commit identity is just an alias, you could
+specify the ultimate name/email(s) for each contributor, so such
+commands as <code>git shortlog -sn</code> could take them into account (see
+<code>git shortlog --help</code>)</li>
 </ul>
 <p><strong>Keep secrets and configuration out of version control</strong>. You <em>really</em> don't
 want to leak your AWS secret key or Postgres username and password on Github.
@@ -1437,17 +1419,13 @@ For example, <code>notebooks/exploratory</code> contains initial explorations, w
 recommended not collaborating directly with others on Jupyter notebooks. There
 are two steps we recommend for using notebooks effectively:</p>
 <ol>
-<li>
-<p>Follow a naming convention that shows the owner and the order the analysis
-   was done in. We use the format <code>&lt;step&gt;_&lt;ghuser&gt;_&lt;description&gt;.ipynb</code> (e.g.,
-   <code>1.0-ed-visualize-distributions.ipynb</code>).</p>
-</li>
-<li>
-<p>Refactor the good parts. Don't write code to do the same task in multiple
-   notebooks. If it's a data preprocessing task, put it in the pipeline at
-   <code>package_name/data</code> and load data from <code>data/interim</code>. If it's useful
-   utility code, refactor it to <code>package_name</code>.</p>
-</li>
+<li>Follow a naming convention that shows the owner and the order the analysis
+was done in. We use the format <code>&lt;step&gt;_&lt;ghuser&gt;_&lt;description&gt;.ipynb</code> (e.g.,
+<code>1.0-ed-visualize-distributions.ipynb</code>).</li>
+<li>Refactor the good parts. Don't write code to do the same task in multiple
+notebooks. If it's a data preprocessing task, put it in the pipeline at
+<code>package_name/data</code> and load data from <code>data/interim</code>. If it's useful
+utility code, refactor it to <code>package_name</code>.</li>
 </ol>
 <p>Now, by default we turn the project into a Python package, so you can import
 your code and use it in notebooks with a cell like the following:</p>
@@ -1505,10 +1483,10 @@ encouraged. We'd love to hear what works for you, and what doesn't!</p>
 community. Here are some projects and blog posts if you're working in R that
 may help you out.</p>
 <ul>
-<li><a href="http://projecttemplate.net/index.html">Project Template</a> - An R data analysis template</li>
-<li>"<a href="http://nicercode.github.io/blog/2013-04-05-projects/">Designing projects</a>" on Nice R Code</li>
-<li>"<a href="http://www.carlboettiger.info/2012/05/06/research-workflow.html">My research workflow</a>" on Carlboettiger.info</li>
-<li>"<a href="http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000424">A Quick Guide to Organizing Computational Biology Projects</a>" in PLOS Computational Biology</li>
+<li><a href="http://projecttemplate.net/index.html">Project Template</a> - An R data analysis template.</li>
+<li>"<a href="http://nicercode.github.io/blog/2013-04-05-projects/">Designing projects</a>" on Nice R Code.</li>
+<li>"<a href="http://www.carlboettiger.info/2012/05/06/research-workflow.html">My research workflow</a>" on Carlboettiger.info.</li>
+<li>"<a href="http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000424">A Quick Guide to Organizing Computational Biology Projects</a>" in PLOS Computational Biology.</li>
 </ul>
 <h3 id="acknowledgements">Acknowledgements</h3>
 <hr />
@@ -1523,10 +1501,12 @@ project (<a href="https://github.com/drivendata/cookiecutter-data-science">githu
 borrowing features from
 <a href="https://github.com/uwescience/shablona">shablona</a> (e.g. duecredit, travis CI) and inspired by the directory
 scaffold of
-<a href="https://github.com/khornlund/cookiecutter-pytorch">Cookiecutter-Pytorch</a>. Here are some examples of projects using <code>cookiecutter-pytorch</code> template:
- 1. <a href="https://github.com/khornlund/severstal-steel-defect-detection">Severstal Steel Defect Detection (Kaggle)</a>
- 2. <a href="https://github.com/khornlund/aptos2019-blindness-detection">Aptos Blindness Detection (Kaggle)</a>
- 3</p>
+<a href="https://github.com/khornlund/cookiecutter-pytorch">Cookiecutter-Pytorch</a>. Here are some examples of projects using <code>cookiecutter-pytorch</code> template:</p>
+<ol>
+<li><a href="https://github.com/khornlund/severstal-steel-defect-detection">Severstal Steel Defect Detection (Kaggle)</a></li>
+<li><a href="https://github.com/khornlund/aptos2019-blindness-detection">Aptos Blindness Detection (Kaggle)</a></li>
+<li><a href="https://github.com/khornlund/understanding-cloud-organization&gt;">Understanding Cloud Organization (Kaggle)</a></li>
+</ol>
                 
               
               
@@ -1570,6 +1550,10 @@ scaffold of
     
     
       <script src="assets/javascripts/bundle.febc23d1.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>
