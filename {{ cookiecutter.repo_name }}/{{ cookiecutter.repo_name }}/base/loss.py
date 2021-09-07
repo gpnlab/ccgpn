@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # coding=utf-8
 
-# import torch
-# import torch.nn as nn
-# import torch.nn.functional as F
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
 
 # For an initial guide on PyTorch loss functions see:
 # https://neptune.ai/blog/pytorch-loss-functions

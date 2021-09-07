@@ -72,7 +72,6 @@ virtual_environment:
 
 ## Install Python Dependencies
 install_requirements: test_environment
-	@echo "make sure to run 'make virtual_environment' if this is the first time running 'make requirements'"
     ifeq (True,$(HAS_CONDA))
 	conda env update -q --name $(PROJECT_NAME) --file environment.yml --prune
     else

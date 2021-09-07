@@ -141,7 +141,7 @@ class BaseTrainer:
         """
         model = type(self.model).__name__
         state = {
-            'model': model,
+            'arch': model,
             'epoch': epoch,
             'state_dict': self.model.state_dict(),
             'optimizer': self.optimizer.state_dict(),

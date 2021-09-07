@@ -5,7 +5,7 @@ import os
 import re
 from dotenv import find_dotenv, load_dotenv
 
-from {{ cookiecutter.repo_name }} import main_example
+from {{ cookiecutter.repo_name }} import main_alpha
 from {{ cookiecutter.repo_name }}.utils import setup_logging
 
 
@@ -26,9 +26,9 @@ def cli():
                     'supported'))
 @click.option('-r', '--resume', default=None, type=str,
               help='path to checkpoint')
-def train_example(config_filename, env_variables, resume):
+def train_alpha(config_filename, env_variables, resume):
     """
-    Entry point to start training run(s) for model `example`.
+    Entry point to start training run(s) for model `alpha`.
     """
     configs = [load_config(f) for f in config_filename]
 
@@ -40,7 +40,7 @@ def train_example(config_filename, env_variables, resume):
     for config in configs:
         setup_logging(config)
         config['ENV'] = env_variables
-        main_example.train(config, resume)
+        main_alpha.train(config, resume)
 
 
 def load_config(filename: str) -> dict:

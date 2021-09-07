@@ -32,17 +32,16 @@ Project Organization
 │           │                                          + "_" + short "-" delimited description
 │           ├── E01_linear-model/
 │           ├── E02_MLP/
-│           └── E03_CNN                             <- Experiments. Naming convention is
+│           └── E03_Alpha                              <- Experiments. Naming convention is
 │                │                                     experiment ID
 │                │                                     (E + ordered two-digit integer)
 │                │                                     + "_" + short "-" delimited description
 │                ├── S0001_pilot/
-│                ├── S0002_adam/
-│                ├── S0003_dec-lr/
-│                └── S0004_inc-batch                <- Setups. Naming convention is setup ID
+│                ├── S0002_dec-lr/
+│                └── S0003_inc-batch                <- Setups. Naming convention is setup ID
 │                      │                               (S + ordered four-digit integer)
 │                      │                               + "_" + short "-" delimited description
-│                      └── A04-E03-S0004.yml        <- YAML configuration file.
+│                      └── A04-E03-S0003.yml        <- YAML configuration file.
 │                                                      Naming convention is aim ID +
 │                                                      "-" + experiment ID + "-" setup ID
 │
@@ -56,7 +55,7 @@ Project Organization
 │    ├── A01-E01-S0001/            <- Name of the YAML config file
 │    ├── A02-E01-S0001/
 │    ├── A03-E01-S0001/
-│    └── A04-E03-S0004
+│    └── A04-E03-S0003
 │         ├── timestamp1/           <- timestamp, in YYYYMMDDhhmmssUTC format,
 │         │                            i.e., year (YYYY), month (MM), day (DD),
 │         │                            hour (hh), minute (mm), second (ss), all according to
@@ -73,7 +72,7 @@ Project Organization
 │    ├── A01-E01-S0001/
 │    ├── A02-E01-S0001/
 │    ├── A03-E01-S0001/
-│    └── A04-E03-S0004
+│    └── A04-E03-S0003
 │         ├── timestamp1/
 │         └── timestamp2/
 │
@@ -95,19 +94,19 @@ Project Organization
     ├── cli.py                    <- command line interface
     ├── package_name.py           <- package script
     ├── main_foo.py               <- training script for model "foo"
-    ├── main_example.py           <- training script for model "example"
+    ├── main_alpha.py             <- training script for model "alpha"
     │
     ├── base                      <- abstract base classes
     │   ├── __init__.py           <- Makes the abstract base class a Python subpackage
-    │   ├── base_transform.py     <- abstract base class for data transformations
-    │   ├── base_dataset.py       <- abstract base class for datasets
-    │   ├── base_dataloader.py    <- abstract base class for data loaders
-    │   ├── base_arch.py          <- abstract base class for models' archtectures
-    │   ├── base_loss.py          <- abstract base class for losses
-    │   ├── base_metric.py        <- abstract base class for metrics
-    │   ├── base_optimizer.py     <- abstract base class for optimizers
-    │   ├── base_scheduler.py     <- abstract base class for schedulers
-    │   └── base_trainer.py       <- abstract base class for trainers
+    │   ├── transform.py          <- abstract base class for data transformations
+    │   ├── dataset.py            <- abstract base class for datasets
+    │   ├── dataloader.py         <- abstract base class for data loaders
+    │   ├── arch.py               <- abstract base class for models' archtectures
+    │   ├── loss.py               <- abstract base class for losses
+    │   ├── metric.py             <- abstract base class for metrics
+    │   ├── optimizer.py          <- abstract base class for optimizers
+    │   ├── scheduler.py          <- abstract base class for schedulers
+    │   └── trainer.py            <- abstract base class for trainers
     │
     ├── utils                     <- utilities
     │    ├── seeder.py            <- manages reproducibility
@@ -116,8 +115,8 @@ Project Organization
     │    └── backer.py            <- manages paths for saving models + logs
     │
     ├── model_foo/                <- each model is a subpackage
-    └── model_example               <- model "example"
-         ├── __init__.py          <- Makes model_bar a Python subpackage
+    └── model_alpha               <- model "alpha"
+         ├── __init__.py          <- Makes model_alpha a Python subpackage
          ├── dataset.py
          ├── transform.py
          ├── dataloader.py
@@ -139,7 +138,7 @@ Project Organization
 Config files are in `.yml` format:
 
 ```yaml
-name: A04-E03-S0004
+name: A04-E03-S0003
 seed: 12345
 target_devices: [0]
 save_dir: trials/
@@ -148,8 +147,11 @@ arch:
     type: bar
     args: {}
 
-data_loader:
-    type: MNIST
+transform:
+    type: MNISTTransform
+
+dataloader:
+    type: MNISTDataloader
     args:
         batch_size: 128
         data_dir: data/
@@ -166,8 +168,8 @@ lr_scheduler:
         step_size: 50
 
 metrics:
-    - my_metric
-    - my_metric2
+    - top_1_acc
+    - top_3_acc
 
 optimizer:
     type: Adam
@@ -195,7 +197,7 @@ Add additional configurations as needed.
 You can specify the name of the training session in config files:
 
 ```yaml
-name: A04-E03-S0004
+name: A04-E03-S0003
 ```
 
 The checkpoints will be saved in

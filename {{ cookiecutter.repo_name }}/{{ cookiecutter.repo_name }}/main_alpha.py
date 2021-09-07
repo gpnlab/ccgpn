@@ -12,15 +12,17 @@ import torch
 import torch.nn as nn
 
 from {{ cookiecutter.repo_name }}.utils import set_seed
+from {{ cookiecutter.repo_name }}.utils import seed_worker, seed_generator
+
 from {{ cookiecutter.repo_name }}.utils import setup_logger
 
-from {{ cookiecutter.repo_name }}.model_example import ModelOptimizer
-from {{ cookiecutter.repo_name }}.model_example import ModelTransform
-from {{ cookiecutter.repo_name }}.model_example import ModelDataloader
-from {{ cookiecutter.repo_name }}.model_example import ModelLoss
-from {{ cookiecutter.repo_name }}.model_example import ModelMetric
-from {{ cookiecutter.repo_name }}.model_example import ModelTrainer
-import torch.optim.lr_schedule as ModelScheduler
+from {{ cookiecutter.repo_name }}.model_alpha import ModelTransform
+from {{ cookiecutter.repo_name }}.model_alpha import ModelDataloader
+from {{ cookiecutter.repo_name }}.model_alpha import ModelLoss
+from {{ cookiecutter.repo_name }}.model_alpha import ModelMetric
+from {{ cookiecutter.repo_name }}.model_alpha import ModelOptimizer
+from {{ cookiecutter.repo_name }}.model_alpha import ModelScheduler
+from {{ cookiecutter.repo_name }}.model_alpha import ModelTrainer
 
 
 logger = setup_logger(__name__)
@@ -172,6 +174,7 @@ def train(cfg: Dict, resume_path: str) -> None:
         seed = set_seed(logger)
     logger.debug(f'seed: {seed}')
 
+
     model = get_instance(ModelArch, 'arch', cfg)
     model, device = setup_device(model, cfg['target_devices'])
 
@@ -184,12 +187,23 @@ def train(cfg: Dict, resume_path: str) -> None:
                                                       optimizer, cfg)
 
     transform = get_instance(ModelTransform, 'transform', cfg)
-    dataloader = get_instance(ModelDataloader, 'dataloader', cfg, transform)
+
+    seed_dataloader = cfg.get("seed_dataloader", False)
+    if seed_dataloader is True:
+            worker_init_fn = seed_worker
+            logger.info("Dataloader seed has been set.")
+            generator = seed_generator(torch.generator, logger)
+            dataloader = get_instance(ModelDataloader, 'dataloader', cfg,
+                                    transform, worker_init_fn, generator)
+    else:
+        dataloader = get_instance(ModelDataloader, 'dataloader', cfg,
+                                  transform)
+
     val_dataloader = dataloader.split_validation()
 
     logger.info('Getting loss and metric function handles')
-    loss = getattr(model_loss, cfg['loss'])
-    metrics = [getattr(model_metric, metric) for metric in cfg['metrics']]
+    loss = getattr(ModelLoss, cfg['loss'])
+    metrics = [getattr(ModelMetric, metric) for metric in cfg['metrics']]
 
     logger.info('Initialising trainer')
     trainer = Trainer(model, optimizer, loss, metrics,

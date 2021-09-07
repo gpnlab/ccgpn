@@ -190,19 +190,19 @@ The directory structure of your new project looks like this:
     ├── cli.py                    <- command line interface
     ├── package_name.py           <- package script
     ├── main_foo.py               <- training script for model "foo"
-    ├── main_example.py           <- training script for model "example"
+    ├── main_bar.py               <- training script for model "bar"
     │
     ├── base                      <- abstract base classes
     │   ├── __init__.py           <- Makes the abstract base class a Python subpackage
-    │   ├── base_transform.py     <- abstract base class for data transformations
-    │   ├── base_dataset.py       <- abstract base class for datasets
-    │   ├── base_dataloader.py    <- abstract base class for data loaders
-    │   ├── base_arch.py          <- abstract base class for models' archtectures
-    │   ├── base_loss.py          <- abstract base class for losses
-    │   ├── base_metric.py        <- abstract base class for metrics
-    │   ├── base_optimizer.py     <- abstract base class for optimizers
-    │   ├── base_scheduler.py     <- abstract base class for schedulers
-    │   └── base_trainer.py       <- abstract base class for trainers
+    │   ├── transform.py          <- abstract base class for data transformations
+    │   ├── dataset.py            <- abstract base class for datasets
+    │   ├── dataloader.py         <- abstract base class for data loaders
+    │   ├── arch.py               <- abstract base class for models' archtectures
+    │   ├── loss.py               <- abstract base class for losses
+    │   ├── metric.py             <- abstract base class for metrics
+    │   ├── optimizer.py          <- abstract base class for optimizers
+    │   ├── scheduler.py          <- abstract base class for schedulers
+    │   └── trainer.py            <- abstract base class for trainers
     │
     ├── utils                     <- utilities
     │    ├── seeder.py            <- manages reproducibility
@@ -211,7 +211,7 @@ The directory structure of your new project looks like this:
     │    └── backer.py            <- manages paths for saving models + logs
     │
     ├── model_foo/                <- each model is a subpackage
-    └── model_example               <- model "example"
+    └── model_bar                 <- model "bar"
          ├── __init__.py          <- Makes model_bar a Python subpackage
          ├── dataset.py
          ├── transform.py
@@ -241,7 +241,7 @@ $ make install_requirements
 3. Run MNIST hello world example
 ```bash
 $ conda activate <your_repo_name>
-$ <your_repo_name> train
+$ <your_repo_name> train_hello
 ```
 
 [![asciicast](https://asciinema.org/a/244658.svg)](https://asciinema.org/a/244658)
@@ -268,11 +268,14 @@ target_devices: [0]
 save_dir: trials/
 
 arch:
-    type: bar
+    type: my_arch
     args: {}
 
-data_loader:
-    type: MNIST
+transform:
+    type: my_transform
+
+dataloader:
+    type: my_dataloader
     args:
         batch_size: 128
         data_dir: data/
@@ -280,10 +283,10 @@ data_loader:
         shuffle: true
         validation_split: 0.1
 
-loss: nll_loss
+loss: my_loss
 
 lr_scheduler:
-    type: StepLR
+    type: my_lr_scheduler
     args:
         gamma: 0.1
         step_size: 50
@@ -293,7 +296,7 @@ metrics:
     - my_metric2
 
 optimizer:
-    type: Adam
+    type: my_optimizer
     args:
         lr: 0.001
         weight_decay: 0

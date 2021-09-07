@@ -73,8 +73,6 @@ def seed_worker(worker_id, logger):
     worker_seed = torch.initial_seed() % 2**32
     np.random.seed(worker_seed)
     random.seed(worker_seed)
-    msg = f"Dataloader worker {worker_id}'s seed {worker_seed} has been set."
-    logger.info(msg)
 
 
 def seed_generator(generator, logger, seed=0):

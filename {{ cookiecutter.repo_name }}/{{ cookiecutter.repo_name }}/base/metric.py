@@ -4,20 +4,6 @@
 import torch
 
 
-def top_1_acc(output, target):
-    """
-    Computes the top 1 accuracy
-    """
-    return top_k_acc(output, target, k=1)
-
-
-def top_3_acc(output, target):
-    """
-    Computes the top 3 accuracy
-    """
-    return top_k_acc(output, target, k=3)
-
-
 def top_k_acc(output, target, k):
     """
     Compute the top k accuracy
