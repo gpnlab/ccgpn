@@ -961,6 +961,6 @@ borrowing features from
 [shablona](https://github.com/uwescience/shablona) (e.g. duecredit, travis CI) and inspired by the directory
 scaffold of
 [Cookiecutter-Pytorch](https://github.com/khornlund/cookiecutter-pytorch). Here are some examples of projects using `cookiecutter-pytorch` template:
+
  1. [Severstal Steel Defect Detection (Kaggle)](https://github.com/khornlund/severstal-steel-defect-detection)
  2. [Aptos Blindness Detection (Kaggle)](https://github.com/khornlund/aptos2019-blindness-detection)
- 3
