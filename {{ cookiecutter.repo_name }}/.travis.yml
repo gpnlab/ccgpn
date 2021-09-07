@@ -8,7 +8,7 @@ deploy:
     secure:
   on:
     tags: true
-    repo: {{ cookiecutter.github_handle }}/{{ cookiecutter.repo_name }}
+    repo: {{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}
 
 python:
   - '3.8'
