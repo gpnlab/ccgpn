@@ -12,7 +12,7 @@
     "github_email": "{{ cookiecutter.author_email }}",
     "project_url": "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}",
     "project_homepage": "{{ cookiecutter.project_url }}",
-    "travis_username": "[OPTIONAL] your travis-CI username"
+    "travis_username": "[OPTIONAL] your travis-CI username",
     "_copy_without_render": [
         "{{ cookiecutter.repo_name }}/docs/_templates/*"
     ]
