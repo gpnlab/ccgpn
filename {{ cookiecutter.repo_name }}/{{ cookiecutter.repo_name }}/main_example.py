@@ -14,12 +14,12 @@ import torch.nn as nn
 from {{ cookiecutter.repo_name }}.utils import set_seed
 from {{ cookiecutter.repo_name }}.utils import setup_logger
 
-from {{ cookiecutter.package_name }}.model_example import ModelOptimizer
-from {{ cookiecutter.package_name }}.model_example import ModelTransform
-from {{ cookiecutter.package_name }}.model_example import ModelDataloader
-from {{ cookiecutter.package_name }}.model_example import ModelLoss
-from {{ cookiecutter.package_name }}.model_example import ModelMetric
-from {{ cookiecutter.package_name }}.model_example import ModelTrainer
+from {{ cookiecutter.repo_name }}.model_example import ModelOptimizer
+from {{ cookiecutter.repo_name }}.model_example import ModelTransform
+from {{ cookiecutter.repo_name }}.model_example import ModelDataloader
+from {{ cookiecutter.repo_name }}.model_example import ModelLoss
+from {{ cookiecutter.repo_name }}.model_example import ModelMetric
+from {{ cookiecutter.repo_name }}.model_example import ModelTrainer
 import torch.optim.lr_schedule as ModelScheduler
 
 

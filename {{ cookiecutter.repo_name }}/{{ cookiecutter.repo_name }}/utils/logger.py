@@ -60,6 +60,6 @@ def setup_logging(trial_config, log_config="logging.yml") -> None:
 
 
 def setup_logger(name):
-    log = logging.getLogger(f'{{ cookiecutter.package_name }}.{name}')
+    log = logging.getLogger(f'{{ cookiecutter.repo_name }}.{name}')
     log.setLevel(LOG_LEVEL)
     return log
