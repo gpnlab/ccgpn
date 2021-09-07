@@ -69,30 +69,28 @@ $ conda install cookiecutter
 ### To start a new project, run:
 ------------
 ```bash
-cookiecutter https://github.com/gpnlab/ccgpn
+$ cookiecutter https://github.com/gpnlab/ccgpn
 ```
 
-### Installing development requirements
+### Test the newly create repo
 ------------
+
+1. Create virtual environment
 ```bash
-make requirements
+$ make virtual_environment
 ```
 
-### Create virtual environment
-------------
+2. Instal development requirements
 ```bash
-make create_environment
+$ make install_requirements
 ```
 
-### Run MNIST hello world example
-------------
+3. Run MNIST hello world example
 ```bash
-conda activate <your_repo_name>
-<your_repo_name> train
+$ conda activate <your_repo_name>
+$ <your_repo_name> train
 ```
 
-### Example setup
-------------
 [![asciicast](https://asciinema.org/a/244658.svg)](https://asciinema.org/a/244658)
 
 ### The resulting directory structure
@@ -223,6 +221,39 @@ The directory structure of your new project looks like this:
          └── trainer.py
 
 ```
+
+### Test the newly create repo
+------------
+
+1. Create virtual environment
+```bash
+$ make virtual_environment
+```
+
+2. Instal development requirements
+```bash
+$ make install_requirements
+```
+
+3. Run MNIST hello world example
+```bash
+$ conda activate <your_repo_name>
+$ <your_repo_name> train
+```
+
+[![asciicast](https://asciinema.org/a/244658.svg)](https://asciinema.org/a/244658)
+
+## Repository Structure
+------------
+Features:
+
+- Clear folder structure which is suitable for many deep learning projects.
+- Runs are configured via ``.yml`` files allowing for easy experimentation.
+- Checkpoint saving and resuming.
+- Tensorboard logging
+
+We now examine the newly created repository in more detail.
+
 ### Config file format
 ------------------
 Config files are in `.yml` format:
@@ -331,16 +362,6 @@ module.
 
 **Note**: You don't have to specify current steps, since `TensorboardWriter`
 class defined at `logger/monitor.py` will track current steps automatically.
-
-## Repository Structure
-------------
-Features:
-
-- Clear folder structure which is suitable for many deep learning projects.
-- Runs are configured via ``.yml`` files allowing for easy experimentation.
-- Checkpoint saving and resuming.
-- Tensorboard logging
-We now examine the newly created repository in more detail.
 
 ### `data`
 ------------
