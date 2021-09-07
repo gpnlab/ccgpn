@@ -13,6 +13,7 @@
     "project_url": "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}",
     "project_homepage": "{{ cookiecutter.project_url }}",
     "travis_username": "[OPTIONAL] your travis-CI username",
+    "tags": "[OPTIONAL] tags or keywords relevant to the project",
     "_copy_without_render": [
         "docs/_templates"
     ]
