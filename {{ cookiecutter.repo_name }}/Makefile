@@ -11,6 +11,8 @@ PROJECT_NAME = {{ cookiecutter.repo_name }}
 PYTHON_INTERPRETER = {{ cookiecutter.python_interpreter }}
 USERNAME = {{ cookiecutter.github_username }}
 EMAIL = {{ cookiecutter.github_email }}
+GITHUB_TOKEN_FILE?=
+GITHUB_TOKEN?="$(cat "$(GITHUB_TOKEN_FILE)")"
 
 ifeq (,$(shell which conda))
 HAS_CONDA=False
@@ -81,22 +83,30 @@ git:
 		git init; \
 		git config user.name $(USERNAME); \
 		git config user.email $(EMAIL); \
-		git add --all && git commit -m "Initial commit! Add README and LICENSE"; \
+		git add --all && git commit -m "Initial commit, hello world!"; \
+		git branch -m main; \
     fi;
 
 ## Set up GitHub
 github: git
 	@echo "adding github remote..."
-	@curl -u ''$(USERNAME)'' https://api.github.com/user/repos -d '{"name": "'"$(PROJECT_NAME)"'", "private": "true"}'
-	@git remote add origin git@github.com:$(USERNAME)/$(PROJECT_NAME).git
-	@echo "push main to origin"
-	@git push -u origin main
-	@echo "set origin as the default remote repo when on branch main"
-	@git config branch.main.remote origin
-	@echo "set origin main as the default remote branch when pull on the main branch"
-	@git config branch.main.merge refs/heads/main
-	@echo "push the current branch to a branch of the same name by default"
-	@git config push.default current
+	@if [ -z $(GITHUB_TOKEN) ]; then \
+		echo "Necessary to pass file with your personal GitHub access token as TOKEN_FILE=<path/to/file> or have the TOKEN environment variable with your token string set upon calling this target"; \
+		echo ""; \
+		echo "Please follow the instructions at https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token"; \
+	else \
+		curl -H "Authorization: token $(GITHUB_TOKEN)" https://api.github.com/user/repos \
+			-d '{"name": "'$(PROJECT_NAME)'", "private": "false"}'; \
+		git remote add origin git@github.com:$(USERNAME)/$(PROJECT_NAME).git; \
+		echo "push main to origin"; \
+		git push -u origin main; \
+		echo "set origin as the default remote repo when on branch main"; \
+		git config branch.main.remote origin; \
+		echo "set origin main as the default remote branch when pull on the main branch"; \
+		git config branch.main.merge refs/heads/main; \
+		echo "push the current branch to a branch of the same name by default"; \
+		git config push.default current; \
+	fi;
 
 ## Install Python Dependencies
 install_requirements: test_environment
