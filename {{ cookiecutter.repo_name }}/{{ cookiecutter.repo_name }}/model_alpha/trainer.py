@@ -2,8 +2,8 @@ import torch
 import numpy as np
 from torchvision.utils import make_grid
 
-from {{ cookiecutter.package_name }}.base import BaseTrainer, AverageMeter
-from {{ cookiecutter.package_name }}.utils import setup_logger
+from {{ cookiecutter.repo_name }}.base import BaseTrainer, AverageMeter
+from {{ cookiecutter.repo_name }}.utils import setup_logger
 
 
 logger = setup_logger(__name__)
