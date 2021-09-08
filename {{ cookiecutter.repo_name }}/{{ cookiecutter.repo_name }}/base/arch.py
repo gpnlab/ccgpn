@@ -2,6 +2,9 @@ import torch.nn as nn
 import numpy as np
 
 
+__all__ = ['BaseArch']
+
+
 class BaseArch(nn.Module):
     """
     Base class for all models

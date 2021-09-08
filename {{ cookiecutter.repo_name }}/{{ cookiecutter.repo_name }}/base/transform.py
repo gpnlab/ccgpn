@@ -7,6 +7,9 @@ from abc import ABC
 import torchvision.transforms as T
 
 
+__all__ = ['AugmentationFactory', 'BaseTransform']
+
+
 class AugmentationFactory(ABC):
     """
     Base class for augmentation factory

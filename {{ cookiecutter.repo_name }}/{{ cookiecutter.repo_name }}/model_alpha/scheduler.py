@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 # coding=utf-8
 
-import torch.optim.lr_scheduler as lr_scheduler
-from {{ cookiecutter.repo_name }}.base import BaseScheduler
+from {{ cookiecutter.repo_name }}.base.scheduler import lr_scheduler, BaseScheduler
+
+
+__all__ = ['StepLR']
 
 
 def StepLR(defaults):

@@ -12,6 +12,9 @@ from {{ cookiecutter.repo_name }}.utils import etc_path, trainer_paths
 logger = setup_logger(__name__)
 
 
+__all__ = ['BaseTrainer', 'AverageMeter']
+
+
 class BaseTrainer:
     """
     Base class for all trainers
@@ -80,17 +83,17 @@ class BaseTrainer:
                     # Check whether model performance improved or not,
                     # according to specified metric(mnt_metric)
                     if self.mnt_mode == 'min':
-                        if results[self.mnt_metric] < self.mnt_best):
+                        if (results[self.mnt_metric] < self.mnt_best):
                             improved = True
-                        else
+                        else:
                             improved = False
                     elif self.mnt_mode == 'max':
-                        if results[self.mnt_metric] > self.mnt_best):
+                        if (results[self.mnt_metric] > self.mnt_best):
                             improved = True
-                        else
+                        else:
                             improved = False
                     # Never reached conditional. Added for readability
-                    else
+                    else:
                         improved = False
 
                 except KeyError:

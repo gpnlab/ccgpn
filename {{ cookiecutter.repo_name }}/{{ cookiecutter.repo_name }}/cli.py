@@ -26,7 +26,7 @@ def cli():
                     'supported'))
 @click.option('-r', '--resume', default=None, type=str,
               help='path to checkpoint')
-def train_alpha(config_filename, env_variables, resume):
+def train_hello(config_filename, env_variables, resume):
     """
     Entry point to start training run(s) for model `alpha`.
     """

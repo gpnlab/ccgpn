@@ -2,7 +2,10 @@
 # coding=utf-8
 
 import torch
-from {{ cookiecutter.repo_name }}.base.BaseMetric import top_k_acc
+from {{ cookiecutter.repo_name }}.base.metric import top_k_acc
+
+
+__all__ = ['top_1_acc', 'top_3_acc']
 
 
 def top_1_acc(output, target):

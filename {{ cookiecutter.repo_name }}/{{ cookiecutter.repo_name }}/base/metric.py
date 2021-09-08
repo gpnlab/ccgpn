@@ -4,6 +4,9 @@
 import torch
 
 
+__all__ = ['top_k_acc']
+
+
 def top_k_acc(output, target, k):
     """
     Compute the top k accuracy

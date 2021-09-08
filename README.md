@@ -75,26 +75,20 @@ $ conda install cookiecutter
 $ cookiecutter https://github.com/gpnlab/ccgpn
 ```
 
-### Test the newly create repo
+[![asciicast](https://asciinema.org/a/244658.svg)](https://asciinema.org/a/244658)
+
+### Add source control using Git and GitHub to repo
 ------------
 
-1. Create virtual environment
+1. Add local source control using Git
 ```bash
-$ make virtual_environment
+$ make git
 ```
 
-2. Instal development requirements
+2. Track the repo remotely using GitHub
 ```bash
-$ make install_requirements
+$ make github
 ```
-
-3. Run MNIST hello world example
-```bash
-$ conda activate <your_repo_name>
-$ <your_repo_name> train
-```
-
-[![asciicast](https://asciinema.org/a/244658.svg)](https://asciinema.org/a/244658)
 
 ### The resulting directory structure
 ------------
@@ -273,6 +267,7 @@ arch:
 
 transform:
     type: my_transform
+    args: {}
 
 dataloader:
     type: my_dataloader

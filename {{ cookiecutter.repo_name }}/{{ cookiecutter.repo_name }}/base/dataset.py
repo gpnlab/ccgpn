@@ -4,6 +4,9 @@
 from torch.utils.data import Dataset
 
 
+__all__ = ['BaseDataset']
+
+
 class BaseDataset(Dataset):
     """
     Base class for all custom datasets

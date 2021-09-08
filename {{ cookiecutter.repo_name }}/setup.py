@@ -16,6 +16,12 @@ SETUP_REQUIRES = ['setuptools >= 24.2.0']
 # This enables setuptools to install wheel on-the-fly
 SETUP_REQUIRES += ['wheel'] if 'bdist_wheel' in sys.argv else []
 
+ENTRY_POINTS = {
+    "console_scripts": [
+        "{{ cookiecutter.repo_name }}={{ cookiecutter.repo_name }}.cli:cli"
+    ]
+}
+
 opts = dict(name=NAME,
             maintainer=MAINTAINER,
             maintainer_email=MAINTAINER_EMAIL,

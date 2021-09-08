@@ -56,8 +56,3 @@ VERSION = __version__
 PACKAGE_DATA = {'{{ cookiecutter.repo_name }}': [pjoin('data', '*')]}
 REQUIRES = [] # use environment.yml for conda or requirements.txt for pip
 PYTHON_REQUIRES = ">= 3.8"
-ENTRY_POINTS = {
-    "console_scripts": [
-        "{{ cookiecutter.repo_name }}={{ cookiecutter.repo_name }}.cli:cli"
-    ]
-}

@@ -1,6 +1,9 @@
 from torch.utils.data import DataLoader
 
 
+__all__ = ['BaseDataLoader']
+
+
 class BaseDataLoader(DataLoader):
     """
     Base class for all data loaders

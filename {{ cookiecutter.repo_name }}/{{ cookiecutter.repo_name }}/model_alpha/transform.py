@@ -5,6 +5,9 @@ from {{ cookiecutter.repo_name }}.base import BaseTransform, AugmentationFactory
 import torchvision.transforms as T
 
 
+__all__ = ['MNISTTransform']
+
+
 class MNISTTransform(AugmentationFactory):
 
     MEANS = [0]

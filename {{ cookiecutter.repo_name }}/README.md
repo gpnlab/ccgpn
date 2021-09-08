@@ -144,11 +144,12 @@ target_devices: [0]
 save_dir: trials/
 
 arch:
-    type: bar
+    type: Alpha
     args: {}
 
 transform:
     type: MNISTTransform
+    args: {}
 
 dataloader:
     type: MNISTDataloader
@@ -191,6 +192,27 @@ testing:
 ```
 
 Add additional configurations as needed.
+
+### Test the newly create repo
+------------
+
+1. Create virtual environment
+```bash
+$ make virtual_environment
+```
+
+2. Instal development requirements
+```bash
+$ make install_requirements
+```
+
+3. Run MNIST hello world example
+```bash
+$ conda activate <your_repo_name>
+$ <your_repo_name> train_hello
+```
+
+[![asciicast](https://asciinema.org/a/244658.svg)](https://asciinema.org/a/244658)
 
 ### Checkpoints
 -----------

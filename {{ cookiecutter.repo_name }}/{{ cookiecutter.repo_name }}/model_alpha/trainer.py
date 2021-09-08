@@ -9,6 +9,9 @@ from {{ cookiecutter.repo_name }}.utils import setup_logger
 logger = setup_logger(__name__)
 
 
+__all__ = ['AlphaTrainer']
+
+
 class AlphaTrainer(BaseTrainer):
     """
     Responsible for training loop and validation.

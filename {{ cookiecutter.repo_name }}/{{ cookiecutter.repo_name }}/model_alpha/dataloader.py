@@ -1,6 +1,9 @@
-from torch.util.data import DataLoader
+from torch.utils.data import DataLoader
 from .dataset import MNISTDataset
 from {{ cookiecutter.repo_name }}.base import BaseDataLoader
+
+
+__all__ = ['MNISTDataLoader']
 
 
 class MNISTDataLoader(BaseDataLoader):

@@ -16,13 +16,13 @@ from {{ cookiecutter.repo_name }}.utils import seed_worker, seed_generator
 
 from {{ cookiecutter.repo_name }}.utils import setup_logger
 
-from {{ cookiecutter.repo_name }}.model_alpha import ModelTransform
-from {{ cookiecutter.repo_name }}.model_alpha import ModelDataloader
-from {{ cookiecutter.repo_name }}.model_alpha import ModelLoss
-from {{ cookiecutter.repo_name }}.model_alpha import ModelMetric
-from {{ cookiecutter.repo_name }}.model_alpha import ModelOptimizer
-from {{ cookiecutter.repo_name }}.model_alpha import ModelScheduler
-from {{ cookiecutter.repo_name }}.model_alpha import ModelTrainer
+import {{ cookiecutter.repo_name }}.model_alpha.transform as ModelTransform
+import {{ cookiecutter.repo_name }}.model_alpha.dataloader as ModelDataLoader
+import {{ cookiecutter.repo_name }}.model_alpha.loss as ModelLoss
+import {{ cookiecutter.repo_name }}.model_alpha.metric as ModelMetric
+import {{ cookiecutter.repo_name }}.model_alpha.optimizer as ModelOptimizer
+import {{ cookiecutter.repo_name }}.model_alpha.scheduler as ModelScheduler
+import {{ cookiecutter.repo_name }}.model_alpha.trainer as ModelTrainer
 
 
 logger = setup_logger(__name__)
@@ -193,10 +193,10 @@ def train(cfg: Dict, resume_path: str) -> None:
             worker_init_fn = seed_worker
             logger.info("Dataloader seed has been set.")
             generator = seed_generator(torch.generator, logger)
-            dataloader = get_instance(ModelDataloader, 'dataloader', cfg,
+            dataloader = get_instance(ModelDataLoader, 'dataloader', cfg,
                                     transform, worker_init_fn, generator)
     else:
-        dataloader = get_instance(ModelDataloader, 'dataloader', cfg,
+        dataloader = get_instance(ModelDataLoader, 'dataloader', cfg,
                                   transform)
 
     val_dataloader = dataloader.split_validation()

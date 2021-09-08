@@ -6,6 +6,10 @@ from {{ cookiecutter.repo_name }}.utils import setup_logger
 
 logger = setup_logger(__name__)
 
+
+__all__ = ['Alpha']
+
+
 class Alpha(BaseArch):
     def __init__(self, num_classes=10):
         super().__init__()
