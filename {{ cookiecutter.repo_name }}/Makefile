@@ -9,6 +9,8 @@ BUCKET = {{ cookiecutter.s3_bucket }}
 PROFILE = {{ cookiecutter.aws_profile }}
 PROJECT_NAME = {{ cookiecutter.repo_name }}
 PYTHON_INTERPRETER = {{ cookiecutter.python_interpreter }}
+USERNAME = {{ cookiecutter.github_username }}
+EMAIL = {{ cookiecutter.github_email }}
 
 ifeq (,$(shell which conda))
 HAS_CONDA=False
@@ -69,6 +71,32 @@ virtual_environment:
 	@bash -c "source `which virtualenvwrapper.sh`;mkvirtualenv $(PROJECT_NAME) --python=$(PYTHON_INTERPRETER)"
 	@echo ">>> New virtualenv created. Activate with:\nworkon $(PROJECT_NAME)"
     endif
+
+## Set up Git
+git:
+	@echo "starting git repo..."
+	@if [ -d ".git" ]; then \
+		echo ".git already exists"; \
+	else \
+		git init; \
+		git config user.name $(USERNAME); \
+		git config user.email $(EMAIL); \
+		git add --all && git commit -m "Initial commit! Add README and LICENSE"; \
+    fi;
+
+## Set up GitHub
+github: git
+	@echo "adding github remote..."
+	@curl -u ''$(USERNAME)'' https://api.github.com/user/repos -d '{"name": "'"$(PROJECT_NAME)"'", "private": "true"}'
+	@git remote add origin git@github.com:$(USERNAME)/$(PROJECT_NAME).git
+	@echo "push main to origin"
+	@git push -u origin main
+	@echo "set origin as the default remote repo when on branch main"
+	@git config branch.main.remote origin
+	@echo "set origin main as the default remote branch when pull on the main branch"
+	@git config branch.main.merge refs/heads/main
+	@echo "push the current branch to a branch of the same name by default"
+	@git config push.default current
 
 ## Install Python Dependencies
 install_requirements: test_environment
