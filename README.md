@@ -235,7 +235,7 @@ $ make install_requirements
 3. Run MNIST hello world example
 ```bash
 $ conda activate <your_repo_name>
-$ <your_repo_name> train_hello
+$ <your_repo_name> train-hello
 ```
 
 [![asciicast](https://asciinema.org/a/244658.svg)](https://asciinema.org/a/244658)
