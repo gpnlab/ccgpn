@@ -250,29 +250,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#installing-development-requirements" class="md-nav__link">
-    Installing development requirements
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-virtual-environment" class="md-nav__link">
-    Create virtual environment
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#run-mnist-hello-world-example" class="md-nav__link">
-    Run MNIST hello world example
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-setup" class="md-nav__link">
-    Example setup
+  <a href="#add-source-control-using-git-and-github-to-repo" class="md-nav__link">
+    Add source control using Git and GitHub to repo
   </a>
   
 </li>
@@ -285,22 +264,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#config-file-format" class="md-nav__link">
-    Config file format
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#checkpoints" class="md-nav__link">
-    Checkpoints
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tensorboard-visualization" class="md-nav__link">
-    Tensorboard Visualization
+  <a href="#test-the-newly-create-repo" class="md-nav__link">
+    Test the newly create repo
   </a>
   
 </li>
@@ -312,6 +277,27 @@
   
     <nav class="md-nav" aria-label="Repository Structure">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#config-file-format" class="md-nav__link">
+    Config file format
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checkpoints" class="md-nav__link">
+    Checkpoints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorboard-visualization" class="md-nav__link">
+    Tensorboard Visualization
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#data" class="md-nav__link">
@@ -476,29 +462,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#installing-development-requirements" class="md-nav__link">
-    Installing development requirements
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-virtual-environment" class="md-nav__link">
-    Create virtual environment
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#run-mnist-hello-world-example" class="md-nav__link">
-    Run MNIST hello world example
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-setup" class="md-nav__link">
-    Example setup
+  <a href="#add-source-control-using-git-and-github-to-repo" class="md-nav__link">
+    Add source control using Git and GitHub to repo
   </a>
   
 </li>
@@ -511,22 +476,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#config-file-format" class="md-nav__link">
-    Config file format
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#checkpoints" class="md-nav__link">
-    Checkpoints
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tensorboard-visualization" class="md-nav__link">
-    Tensorboard Visualization
+  <a href="#test-the-newly-create-repo" class="md-nav__link">
+    Test the newly create repo
   </a>
   
 </li>
@@ -538,6 +489,27 @@
   
     <nav class="md-nav" aria-label="Repository Structure">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#config-file-format" class="md-nav__link">
+    Config file format
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checkpoints" class="md-nav__link">
+    Checkpoints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorboard-visualization" class="md-nav__link">
+    Tensorboard Visualization
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#data" class="md-nav__link">
@@ -732,24 +704,21 @@ $ conda install cookiecutter
 </code></pre>
 <h3 id="to-start-a-new-project-run">To start a new project, run:</h3>
 <hr />
-<pre><code class="language-bash">cookiecutter https://github.com/gpnlab/ccgpn
+<pre><code class="language-bash">$ cookiecutter https://github.com/gpnlab/ccgpn
 </code></pre>
-<h3 id="installing-development-requirements">Installing development requirements</h3>
-<hr />
-<pre><code class="language-bash">make requirements
-</code></pre>
-<h3 id="create-virtual-environment">Create virtual environment</h3>
-<hr />
-<pre><code class="language-bash">make create_environment
-</code></pre>
-<h3 id="run-mnist-hello-world-example">Run MNIST hello world example</h3>
-<hr />
-<pre><code class="language-bash">conda activate &lt;your_repo_name&gt;
-&lt;your_repo_name&gt; train
-</code></pre>
-<h3 id="example-setup">Example setup</h3>
-<hr />
 <p><a href="https://asciinema.org/a/244658"><img alt="asciicast" src="https://asciinema.org/a/244658.svg" /></a></p>
+<h3 id="add-source-control-using-git-and-github-to-repo">Add source control using Git and GitHub to repo</h3>
+<hr />
+<ol>
+<li>Add local source control using Git</li>
+</ol>
+<pre><code class="language-bash">$ make git
+</code></pre>
+<ol>
+<li>Track the repo remotely using GitHub</li>
+</ol>
+<pre><code class="language-bash">$ make github
+</code></pre>
 <h3 id="the-resulting-directory-structure">The resulting directory structure</h3>
 <hr />
 <p>The directory structure of your new project looks like this:</p>
@@ -842,19 +811,19 @@ $ conda install cookiecutter
     ├── cli.py                    &lt;- command line interface
     ├── package_name.py           &lt;- package script
     ├── main_foo.py               &lt;- training script for model &quot;foo&quot;
-    ├── main_example.py           &lt;- training script for model &quot;example&quot;
+    ├── main_bar.py               &lt;- training script for model &quot;bar&quot;
     │
     ├── base                      &lt;- abstract base classes
     │   ├── __init__.py           &lt;- Makes the abstract base class a Python subpackage
-    │   ├── base_transform.py     &lt;- abstract base class for data transformations
-    │   ├── base_dataset.py       &lt;- abstract base class for datasets
-    │   ├── base_dataloader.py    &lt;- abstract base class for data loaders
-    │   ├── base_arch.py          &lt;- abstract base class for models' archtectures
-    │   ├── base_loss.py          &lt;- abstract base class for losses
-    │   ├── base_metric.py        &lt;- abstract base class for metrics
-    │   ├── base_optimizer.py     &lt;- abstract base class for optimizers
-    │   ├── base_scheduler.py     &lt;- abstract base class for schedulers
-    │   └── base_trainer.py       &lt;- abstract base class for trainers
+    │   ├── transform.py          &lt;- abstract base class for data transformations
+    │   ├── dataset.py            &lt;- abstract base class for datasets
+    │   ├── dataloader.py         &lt;- abstract base class for data loaders
+    │   ├── arch.py               &lt;- abstract base class for models' archtectures
+    │   ├── loss.py               &lt;- abstract base class for losses
+    │   ├── metric.py             &lt;- abstract base class for metrics
+    │   ├── optimizer.py          &lt;- abstract base class for optimizers
+    │   ├── scheduler.py          &lt;- abstract base class for schedulers
+    │   └── trainer.py            &lt;- abstract base class for trainers
     │
     ├── utils                     &lt;- utilities
     │    ├── seeder.py            &lt;- manages reproducibility
@@ -863,7 +832,7 @@ $ conda install cookiecutter
     │    └── backer.py            &lt;- manages paths for saving models + logs
     │
     ├── model_foo/                &lt;- each model is a subpackage
-    └── model_example               &lt;- model &quot;example&quot;
+    └── model_bar                 &lt;- model &quot;bar&quot;
          ├── __init__.py          &lt;- Makes model_bar a Python subpackage
          ├── dataset.py
          ├── transform.py
@@ -876,6 +845,35 @@ $ conda install cookiecutter
          └── trainer.py
 
 </code></pre>
+<h3 id="test-the-newly-create-repo">Test the newly create repo</h3>
+<hr />
+<ol>
+<li>Create virtual environment</li>
+</ol>
+<pre><code class="language-bash">$ make virtual_environment
+</code></pre>
+<ol>
+<li>Instal development requirements</li>
+</ol>
+<pre><code class="language-bash">$ make install_requirements
+</code></pre>
+<ol>
+<li>Run MNIST hello world example</li>
+</ol>
+<pre><code class="language-bash">$ conda activate &lt;your_repo_name&gt;
+$ &lt;your_repo_name&gt; train-hello
+</code></pre>
+<p><a href="https://asciinema.org/a/244658"><img alt="asciicast" src="https://asciinema.org/a/244658.svg" /></a></p>
+<h2 id="repository-structure">Repository Structure</h2>
+<hr />
+<p>Features:</p>
+<ul>
+<li>Clear folder structure which is suitable for many deep learning projects.</li>
+<li>Runs are configured via <code>.yml</code> files allowing for easy experimentation.</li>
+<li>Checkpoint saving and resuming.</li>
+<li>Tensorboard logging</li>
+</ul>
+<p>We now examine the newly created repository in more detail.</p>
 <h3 id="config-file-format">Config file format</h3>
 <hr />
 <p>Config files are in <code>.yml</code> format:</p>
@@ -885,11 +883,15 @@ target_devices: [0]
 save_dir: trials/
 
 arch:
-    type: bar
+    type: my_arch
     args: {}
 
-data_loader:
-    type: MNIST
+transform:
+    type: my_transform
+    args: {}
+
+dataloader:
+    type: my_dataloader
     args:
         batch_size: 128
         data_dir: data/
@@ -897,10 +899,10 @@ data_loader:
         shuffle: true
         validation_split: 0.1
 
-loss: nll_loss
+loss: my_loss
 
 lr_scheduler:
-    type: StepLR
+    type: my_lr_scheduler
     args:
         gamma: 0.1
         step_size: 50
@@ -910,7 +912,7 @@ metrics:
     - my_metric2
 
 optimizer:
-    type: Adam
+    type: my_optimizer
     args:
         lr: 0.001
         weight_decay: 0
@@ -973,16 +975,6 @@ template are basically wrappers for those of <code>tensorboard.SummaryWriter</co
 module.</p>
 <p><strong>Note</strong>: You don't have to specify current steps, since <code>TensorboardWriter</code>
 class defined at <code>logger/monitor.py</code> will track current steps automatically.</p>
-<h2 id="repository-structure">Repository Structure</h2>
-<hr />
-<p>Features:</p>
-<ul>
-<li>Clear folder structure which is suitable for many deep learning projects.</li>
-<li>Runs are configured via <code>.yml</code> files allowing for easy experimentation.</li>
-<li>Checkpoint saving and resuming.</li>
-<li>Tensorboard logging
-We now examine the newly created repository in more detail.</li>
-</ul>
 <h3 id="data"><code>data</code></h3>
 <hr />
 <p>Don't ever edit your raw data, especially not manually, and especially not in
