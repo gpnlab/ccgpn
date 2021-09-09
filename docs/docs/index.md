@@ -72,7 +72,7 @@ $ conda install cookiecutter
 $ cookiecutter https://github.com/gpnlab/ccgpn
 ```
 
-[![asciicast](https://asciinema.org/a/244658.svg)](https://asciinema.org/a/244658)
+[![asciicast](https://asciinema.org/a/434846.svg)](https://asciinema.org/a/434846)
 
 ### Add source control using Git and GitHub to repo
 ------------
@@ -234,8 +234,6 @@ $ make install_requirements
 $ conda activate <your_repo_name>
 $ <your_repo_name> train-hello
 ```
-
-[![asciicast](https://asciinema.org/a/244658.svg)](https://asciinema.org/a/244658)
 
 ## Repository Structure
 ------------
