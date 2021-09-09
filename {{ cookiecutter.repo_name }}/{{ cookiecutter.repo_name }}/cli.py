@@ -19,6 +19,7 @@ def cli():
 
 @cli.command()
 @click.option('-c', '--config-filename', multiple=True,
+              default=['experiments/A04_MNIST-handwritten-digit-classification/E03_CNN/S0004_inc-batch/A04-E03-S0004.yml'],
               help=('Path to training configuration file. If multiple are '
                     'provided, runs will be executed in order'))
 @click.option('-e', '--env-variables', multiple=True,

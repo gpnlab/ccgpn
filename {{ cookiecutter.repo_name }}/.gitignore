@@ -100,3 +100,6 @@ target/
 .venv
 venv/
 ENV/
+
+# Experimental Trials
+trials/
