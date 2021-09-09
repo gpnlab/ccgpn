@@ -18,6 +18,7 @@ from {{ cookiecutter.repo_name }}.utils import setup_logger
 
 import {{ cookiecutter.repo_name }}.model_alpha.transform as ModelTransform
 import {{ cookiecutter.repo_name }}.model_alpha.dataloader as ModelDataLoader
+import {{ cookiecutter.repo_name }}.model_alpha.arch as ModelArch
 import {{ cookiecutter.repo_name }}.model_alpha.loss as ModelLoss
 import {{ cookiecutter.repo_name }}.model_alpha.metric as ModelMetric
 import {{ cookiecutter.repo_name }}.model_alpha.optimizer as ModelOptimizer
@@ -129,7 +130,7 @@ def resume_checkpoint(resume_path, model, optimizer, config):
 
     logger.info(f'Loading checkpoint: {resume_path}')
     ckpt = torch.load(resume_path)
-    model.load_state_dict(checkpoint['state_dict'])
+    model.load_state_dict(ckpt['state_dict'])
 
     # load optimizer state from checkpoint only if optimizer type is the same
     if ckpt['config']['optimizer']['type'] != config['optimizer']['type']:
@@ -137,7 +138,7 @@ def resume_checkpoint(resume_path, model, optimizer, config):
                " that of checkpoint. Optimizer parameters not being resumed.")
         logger.warning(msg)
     else:
-        optimizer.load_state_dict(checkpoint['optimizer'])
+        optimizer.load_state_dict(ckpt['optimizer'])
 
     logger.info(f'Checkpoint "{resume_path}" loaded')
     return model, optimizer, ckpt['epoch']
@@ -206,13 +207,13 @@ def train(cfg: Dict, resume_path: str) -> None:
     metrics = [getattr(ModelMetric, metric) for metric in cfg['metrics']]
 
     logger.info('Initialising trainer')
-    trainer = Trainer(model, optimizer, loss, metrics,
-                      start_epoch=start_epoch,
-                      config=cfg,
-                      device=device,
-                      dataloader=dataloader,
-                      val_dataloader=val_dataloader,
-                      lr_scheduler=lr_scheduler)
+    trainer = ModelTrainer.AlphaTrainer(model, loss, metrics, optimizer,
+                                        start_epoch=start_epoch,
+                                        config=cfg,
+                                        device=device,
+                                        dataloader=dataloader,
+                                        val_dataloader=val_dataloader,
+                                        lr_scheduler=lr_scheduler)
 
     trainer.train()
     logger.info('Finished!')

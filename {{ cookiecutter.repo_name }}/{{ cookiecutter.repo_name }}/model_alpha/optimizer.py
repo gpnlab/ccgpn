@@ -8,5 +8,5 @@ from {{ cookiecutter.repo_name }}.base.optimizer import BaseOptimizer
 __all__ = ['Adam']
 
 
-def Adam(params, defaults):
-    return optim.Adam(params, defaults)
+def Adam(*params, **defaults):
+    return optim.Adam(*params, **defaults)

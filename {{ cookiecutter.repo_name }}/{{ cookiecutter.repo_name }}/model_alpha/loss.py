@@ -8,5 +8,5 @@ from {{ cookiecutter.repo_name }}.base import BaseLoss
 __all__ = ['nll_loss']
 
 
-def nll_loss(input, target):
-    return F.nll_loss(input, target)
+def nll_loss(output, target):
+    return F.nll_loss(output, target)

@@ -7,5 +7,5 @@ from {{ cookiecutter.repo_name }}.base.scheduler import lr_scheduler, BaseSchedu
 __all__ = ['StepLR']
 
 
-def StepLR(defaults):
-    return lr_scheduler.StepLR(defaults)
+def StepLR(optimizer, **defaults):
+    return lr_scheduler.StepLR(optimizer, **defaults)

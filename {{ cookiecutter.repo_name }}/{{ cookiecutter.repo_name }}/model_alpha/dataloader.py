@@ -22,7 +22,7 @@ class MNISTDataLoader(BaseDataLoader):
             download=True,
             transform=transform.get_transform(train=True)
         )
-        self.val_dataset = MNISTDataset.MNIST(
+        self.val_dataset = MNISTDataset(
             self.data_dir,
             train=False,
             download=True,

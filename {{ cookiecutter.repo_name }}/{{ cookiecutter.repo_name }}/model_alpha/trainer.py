@@ -43,7 +43,7 @@ class AlphaTrainer(BaseTrainer):
 
             self.optimizer.zero_grad()
             output = self.model(data)
-            loss = self.loss(input, target)
+            loss = self.loss(output, target)
             loss.backward()
             self.optimizer.step()
 
@@ -103,7 +103,7 @@ class AlphaTrainer(BaseTrainer):
                 yield value
 
 
-    def _valid_epoch(self, epoch: int) -> dict:
+    def _val_epoch(self, epoch: int) -> dict:
         """
         Validate after training epoch.
 
@@ -115,10 +115,10 @@ class AlphaTrainer(BaseTrainer):
         loss_mtr = AverageMeter('loss')
         metric_mtrs = [AverageMeter(m.__name__) for m in self.metrics]
         with torch.no_grad():
-            for batch_idx, (data, target) in enumerate(self.valid_dataloader):
+            for batch_idx, (data, target) in enumerate(self.val_dataloader):
                 data, target = data.to(self.device), target.to(self.device)
                 output = self.model(data)
-                loss = self.loss(input, target)
+                loss = self.loss(output, target)
                 loss_mtr.update(loss.item(), data.size(0))
                 for mtr, value in zip(metric_mtrs,
                                       self._eval_metrics(output, target)):
