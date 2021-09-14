@@ -39,4 +39,12 @@ dependencies:
   - pip
   - pip:
     - duecredit
+    - watermark
+    - torchinfo
+    - dominate
+    - visdom
+    - Pillow
+    - jupyterlab_vim
+    - ipywidgets
+    - nb-clean
     - -e .  # install package in development mode

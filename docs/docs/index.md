@@ -71,6 +71,8 @@ $ cookiecutter https://github.com/gpnlab/ccgpn
 
 [![asciicast](https://asciinema.org/a/434846.svg)](https://asciinema.org/a/434846)
 
+Do not name your repo (`repo_name` prompt) with anything start with a number, since Python puts a fist around importing modules starting with numbers and it is a hassle to cover all the instances.
+
 ### Add source control using Git and GitHub to repo
 ------------
 
@@ -222,6 +224,9 @@ $ make virtual_environment
 ```
 
 2. Instal development requirements
+**Note:** Before installing the requirements, update `environment.yml` and/or
+`requirements.txt` and `requirements-dev.txt` to suit your project needs
+
 ```bash
 $ make install_requirements
 ```

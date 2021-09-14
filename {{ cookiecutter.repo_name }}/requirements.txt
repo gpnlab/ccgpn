@@ -22,6 +22,14 @@ sphinx
 awscli
 python-dotenv
 duecredit
+watermark
+torchinfo
+dominate
+visdom
+Pillow
+jupyterlab_vim
+ipywidgets
+nb-clean
 {% if cookiecutter.python_interpreter != 'python3' %}
 
 # backwards compatibility
