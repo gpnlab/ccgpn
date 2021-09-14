@@ -4,10 +4,13 @@
 
 <h4><p style="text-align:right;">Project GitHub Repo: <a href=https://github.com/gpnlab/ccgpn/>https://github.com/gpnlab/ccgpn</a></p></h4>
 
-Why this template? A well-defined, standard project structure means that a
-newcomer can begin to understand an analysis without digging in to extensive
-documentation. It also means that they don't necessarily have to read 100% of
-the code before knowing where to look for very specific things.
+### Why this template?
+![standards](./standards.png)
+
+A well-defined, standard project structure means that a newcomer can begin to
+understand an analysis without digging in to extensive documentation. It also
+means that they don't necessarily have to read 100% of the code before knowing
+where to look for very specific things.
 
 Well organized code tends to be self-documenting in that the organization
 itself provides context for your code without much overhead. A great example is
@@ -25,28 +28,22 @@ of the scientific Python eco-system. Following these standards and
 recommendations will make it easier
 
 - for others to use your code,
-- to port your code into other projects
+- to port your code into other projects,
 - to collaborate with other users of this eco-system,
 - to learn about the analysis process and the domain, and
 - to feel confident in analysis conclusions.
 
-We're not talking about bikeshedding the indentation aesthetics or pedantic
-formatting standards — ultimately, data science code quality is about
-correctness and reproducibility.
-
-Just Python? Your analysis doesn't have to be in Python, but the template does
-provide some Python boilerplate that you'd want to remove (in the
-`package_name` folder for example, and the Sphinx documentation skeleton in
-`docs`).
+We're not talking about [devoting a disproportionate amount of time to menial
+and trivial matters](https://en.wikipedia.org/wiki/Law_of_triviality) like
+indentation aesthetics or hairsplitting formatting standards — after all, what
+really matters is code correctness and reproducibility.
+![bikeshedding](./bikeshedding.png)
 
 Disagree with a couple of the default folder names? Working on a project that's
 a little nonstandard and doesn't exactly fit with the current structure? Prefer
-to use a different package than one of the (few) defaults?
-
-**Go for it!** This is a lightweight structure, and is intended to be a good
-starting point for many projects.
-
-![standards](./standards.png)
+to use a different package than one of the (few) defaults? **Go for it!** This
+is a lightweight structure, and is intended to be a good starting point for
+many projects.
 
 ### Requirements to use this cookiecutter:
 -----------
@@ -235,6 +232,25 @@ $ conda activate <your_repo_name>
 $ <your_repo_name> train-hello
 ```
 
+To see all available rules, the command `make help` is available.
+
+As of this version, the following commands are available:
+```bash
+$ make help
+
+Available rules:
+
+clean                Delete all compiled Python files
+git                  Set up Git
+github               Set up GitHub
+install_requirements Install Python Dependencies
+lint                 Lint using flake8
+sync_data_from_s3    Download Data from S3
+sync_data_to_s3      Upload Data to S3
+test_environment     Test python environment is setup correctly
+virtual_environment  Set up python interpreter environment
+```
+
 ## Repository Structure
 ------------
 Features:
@@ -341,7 +357,8 @@ checkpoint = {
 
 ### Tensorboard Visualization
 --------------------------
-This template supports [Tensorboard visualization](https://pytorch.org/docs/stable/tensorboard.html)
+This template supports [Tensorboard
+visualization](https://pytorch.org/docs/stable/tensorboard.html)
 
 1. Run training
 > Set `tensorboard` option in config file true.
@@ -359,7 +376,7 @@ module.
 **Note**: You don't have to specify current steps, since `TensorboardWriter`
 class defined at `logger/monitor.py` will track current steps automatically.
 
-### `data`
+### The `data` folder
 ------------
 
 Don't ever edit your raw data, especially not manually, and especially not in
@@ -459,7 +476,7 @@ root = Path(pkg.__path__[0]).parent.absolute()
 data_path = op.join(root, 'data')
 ```
 
-### `package_name`
+### The `package_name` folder
 ------------
 
 We place the main module for the source code in a file called `package_name.py`
