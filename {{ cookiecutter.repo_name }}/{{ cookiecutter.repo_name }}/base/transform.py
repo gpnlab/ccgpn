@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 # coding=utf-8
 
-import abc
-from abc import ABC
+from abc import ABC, abstractmethod
 
 import torchvision.transforms as T
 
@@ -20,14 +19,14 @@ class AugmentationFactory(ABC):
         """
         return self.get_train() if train else self.get_test()
 
-    @abc.abstractmethod
+    @abstractmethod
     def get_train(self):
         """
         Get transform to be applied to the train dataset
         """
         raise NotImplementedError
 
-    @abc.abstractmethod
+    @abstractmethod
     def get_test(self):
         """
         Get transform to be applied to the test dataset
@@ -35,12 +34,14 @@ class AugmentationFactory(ABC):
         raise NotImplementedError
 
 
-class BaseTransform():
+class BaseTransform(ABC):
     """
     Base class for all custom transforms
     """
+    @abstractmethod
     def __init__(self):
         pass
 
+    @abstractmethod
     def __call__(self, sample):
         raise NotImplementedError

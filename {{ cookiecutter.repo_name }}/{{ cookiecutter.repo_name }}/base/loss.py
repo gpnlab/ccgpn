@@ -7,8 +7,7 @@
 # For advanced PyTorch custom loss functions see:
 # https://www.kaggle.com/bigironsphere/loss-function-library-keras-pytorch/comments
 
-import abc
-from abc import ABC
+from abc import ABC, abstractmethod
 
 import torch
 import torch.nn as nn
@@ -22,5 +21,6 @@ class BaseLoss(ABC):
     """
     Base class for all custom losses
     """
+    @abstractmethod
     def __init__(self):
         pass
