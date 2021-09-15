@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#requirements-to-use-this-cookiecutter" class="md-skip">
+        <a href="#why-this-template" class="md-skip">
           Skip to content
         </a>
       
@@ -236,6 +236,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#why-this-template" class="md-nav__link">
+    Why this template?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#requirements-to-use-this-cookiecutter" class="md-nav__link">
     Requirements to use this cookiecutter:
   </a>
@@ -300,15 +307,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#data" class="md-nav__link">
-    data
+  <a href="#the-data-folder" class="md-nav__link">
+    The data folder
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#package_name" class="md-nav__link">
-    package_name
+  <a href="#the-package_name-folder" class="md-nav__link">
+    The package_name folder
   </a>
   
 </li>
@@ -448,6 +455,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#why-this-template" class="md-nav__link">
+    Why this template?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#requirements-to-use-this-cookiecutter" class="md-nav__link">
     Requirements to use this cookiecutter:
   </a>
@@ -512,15 +526,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#data" class="md-nav__link">
-    data
+  <a href="#the-data-folder" class="md-nav__link">
+    The data folder
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#package_name" class="md-nav__link">
-    package_name
+  <a href="#the-package_name-folder" class="md-nav__link">
+    The package_name folder
   </a>
   
 </li>
@@ -650,10 +664,12 @@
 <p><center> <h1><strong>Cookiecutter GPN:</strong> A flexible template for implementing and sharing machine learning models.</h1></center></p>
 <h4><p style="text-align:right;">Project GitHub Repo: <a href=https://github.com/gpnlab/ccgpn/>https://github.com/gpnlab/ccgpn</a></p></h4>
 
-<p>Why this template? A well-defined, standard project structure means that a
-newcomer can begin to understand an analysis without digging in to extensive
-documentation. It also means that they don't necessarily have to read 100% of
-the code before knowing where to look for very specific things.</p>
+<h3 id="why-this-template">Why this template?</h3>
+<p><img alt="standards" src="standards.png" /></p>
+<p>A well-defined, standard project structure means that a newcomer can begin to
+understand an analysis without digging in to extensive documentation. It also
+means that they don't necessarily have to read 100% of the code before knowing
+where to look for very specific things.</p>
 <p>Well organized code tends to be self-documenting in that the organization
 itself provides context for your code without much overhead. A great example is
 the <a href="https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard">Filesystem Hierarchy
@@ -669,24 +685,21 @@ of the scientific Python eco-system. Following these standards and
 recommendations will make it easier</p>
 <ul>
 <li>for others to use your code,</li>
-<li>to port your code into other projects</li>
+<li>to port your code into other projects,</li>
 <li>to collaborate with other users of this eco-system,</li>
 <li>to learn about the analysis process and the domain, and</li>
 <li>to feel confident in analysis conclusions.</li>
 </ul>
-<p>We're not talking about bikeshedding the indentation aesthetics or pedantic
-formatting standards — ultimately, data science code quality is about
-correctness and reproducibility.</p>
-<p>Just Python? Your analysis doesn't have to be in Python, but the template does
-provide some Python boilerplate that you'd want to remove (in the
-<code>package_name</code> folder for example, and the Sphinx documentation skeleton in
-<code>docs</code>).</p>
+<p>We're not talking about <a href="https://en.wikipedia.org/wiki/Law_of_triviality">devoting a disproportionate amount of time to menial
+and trivial matters</a> like
+indentation aesthetics or hairsplitting formatting standards — after all, what
+really matters is code correctness and reproducibility.
+<img alt="bikeshedding" src="bikeshedding.png" /></p>
 <p>Disagree with a couple of the default folder names? Working on a project that's
 a little nonstandard and doesn't exactly fit with the current structure? Prefer
-to use a different package than one of the (few) defaults?</p>
-<p><strong>Go for it!</strong> This is a lightweight structure, and is intended to be a good
-starting point for many projects.</p>
-<p><img alt="standards" src="standards.png" /></p>
+to use a different package than one of the (few) defaults? <strong>Go for it!</strong> This
+is a lightweight structure, and is intended to be a good starting point for
+many projects.</p>
 <h3 id="requirements-to-use-this-cookiecutter">Requirements to use this cookiecutter:</h3>
 <hr />
 <ul>
@@ -704,9 +717,10 @@ $ conda install cookiecutter
 </code></pre>
 <h3 id="to-start-a-new-project-run">To start a new project, run:</h3>
 <hr />
-<pre><code class="language-bash">$ cookiecutter https://github.com/gpnlab/ccgpn
+<pre><code class="language-bash">$ cookiecutter -c v1.0.0 https://github.com/gpnlab/ccgpn
 </code></pre>
 <p><a href="https://asciinema.org/a/434846"><img alt="asciicast" src="https://asciinema.org/a/434846.svg" /></a></p>
+<p>Do not name your repo (<code>repo_name</code> prompt) with anything start with a number, since Python puts a fist around importing modules starting with numbers and it is a hassle to cover all the instances.</p>
 <h3 id="add-source-control-using-git-and-github-to-repo">Add source control using Git and GitHub to repo</h3>
 <hr />
 <ol>
@@ -853,7 +867,9 @@ $ conda install cookiecutter
 <pre><code class="language-bash">$ make virtual_environment
 </code></pre>
 <ol>
-<li>Instal development requirements</li>
+<li>Instal development requirements
+<strong>Note:</strong> Before installing the requirements, update <code>environment.yml</code> and/or
+<code>requirements.txt</code> and <code>requirements-dev.txt</code> to suit your project needs</li>
 </ol>
 <pre><code class="language-bash">$ make install_requirements
 </code></pre>
@@ -862,6 +878,22 @@ $ conda install cookiecutter
 </ol>
 <pre><code class="language-bash">$ conda activate &lt;your_repo_name&gt;
 $ &lt;your_repo_name&gt; train-hello
+</code></pre>
+<p>To see all available rules, the command <code>make help</code> is available.</p>
+<p>As of this version, the following commands are available:</p>
+<pre><code class="language-bash">$ make help
+
+Available rules:
+
+clean                Delete all compiled Python files
+git                  Set up Git
+github               Set up GitHub
+install_requirements Install Python Dependencies
+lint                 Lint using flake8
+sync_data_from_s3    Download Data from S3
+sync_data_to_s3      Upload Data to S3
+test_environment     Test python environment is setup correctly
+virtual_environment  Set up python interpreter environment
 </code></pre>
 <h2 id="repository-structure">Repository Structure</h2>
 <hr />
@@ -954,7 +986,8 @@ Universtal Time (<code>UTC</code>) standard. A copy of config file will be saved
 </code></pre>
 <h3 id="tensorboard-visualization">Tensorboard Visualization</h3>
 <hr />
-<p>This template supports <a href="https://pytorch.org/docs/stable/tensorboard.html">Tensorboard visualization</a></p>
+<p>This template supports <a href="https://pytorch.org/docs/stable/tensorboard.html">Tensorboard
+visualization</a></p>
 <ol>
 <li>Run training<blockquote>
 <p>Set <code>tensorboard</code> option in config file true.</p>
@@ -974,7 +1007,7 @@ template are basically wrappers for those of <code>tensorboard.SummaryWriter</co
 module.</p>
 <p><strong>Note</strong>: You don't have to specify current steps, since <code>TensorboardWriter</code>
 class defined at <code>logger/monitor.py</code> will track current steps automatically.</p>
-<h3 id="data"><code>data</code></h3>
+<h3 id="the-data-folder">The <code>data</code> folder</h3>
 <hr />
 <p>Don't ever edit your raw data, especially not manually, and especially not in
 Excel. Don't overwrite your raw data. Don't save multiple versions of the raw
@@ -1065,7 +1098,7 @@ import package_name as pkg
 root = Path(pkg.__path__[0]).parent.absolute()
 data_path = op.join(root, 'data')
 </code></pre>
-<h3 id="package_name"><code>package_name</code></h3>
+<h3 id="the-package_name-folder">The <code>package_name</code> folder</h3>
 <hr />
 <p>We place the main module for the source code in a file called <code>package_name.py</code>
 in directory called <code>package_name</code>. This structure is a bit confusing at first,
@@ -1490,9 +1523,10 @@ spend less time molding and more time getting things baked.</p>
 Science</a>
 project (<a href="https://github.com/drivendata/cookiecutter-data-science">github</a>),
 borrowing features from
-<a href="https://github.com/uwescience/shablona">shablona</a> (e.g. duecredit, travis CI) and inspired by the directory
-scaffold of
-<a href="https://github.com/khornlund/cookiecutter-pytorch">Cookiecutter-Pytorch</a>. Here are some examples of projects using <code>cookiecutter-pytorch</code> template:</p>
+<a href="https://github.com/uwescience/shablona">shablona</a> (e.g. duecredit, travis CI)
+and inspired by the directory scaffold of
+<a href="https://github.com/khornlund/cookiecutter-pytorch">Cookiecutter-Pytorch</a>. Here
+are some examples of projects using <code>cookiecutter-pytorch</code> template:</p>
 <ol>
 <li><a href="https://github.com/khornlund/severstal-steel-defect-detection">Severstal Steel Defect Detection (Kaggle)</a></li>
 <li><a href="https://github.com/khornlund/aptos2019-blindness-detection">Aptos Blindness Detection (Kaggle)</a></li>
