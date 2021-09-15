@@ -66,7 +66,7 @@ $ conda install cookiecutter
 ### To start a new project, run:
 ------------
 ```bash
-$ cookiecutter https://github.com/gpnlab/ccgpn
+$ cookiecutter -c v1.0.0 https://github.com/gpnlab/ccgpn
 ```
 
 [![asciicast](https://asciinema.org/a/434846.svg)](https://asciinema.org/a/434846)
